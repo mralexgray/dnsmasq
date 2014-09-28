@@ -1,0 +1,9 @@
+#!/bin/bash
+
+PL=/Library/LaunchDaemons/com.mrgray.dnsmasq.plist
+
+sudo /bin/launchctl unload -w "$PL"
+sudo sleep 3
+sudo /bin/launchctl load -w "$PL" 
+
+afplay /sd/Dicksonisms/Tarriffic.mp3

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Debug</key>
+	<true/>
+	<key>Disabled</key>
+	<false/>
+	<key>Label</key>
+	<string>com.mrgray.dnsmasq_dev_killer</string>
+	<key>Program</key>
+	<string>/bin/launchctl unload -w /Library/LaunchDaemons/com.mrgray.dnsmasq.plist &amp;&amp; sleep 3 &amp;&amp; /bin/launchctl load-w /Library/LaunchDaemons/com.mrgray.dnsmasq.plist</string>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>WatchPaths</key>
+	<array>
+		<string>/xbin/dnsmasq</string>
+	</array>
+</dict>
+</plist>

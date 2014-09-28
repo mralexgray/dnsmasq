@@ -71,6 +71,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7B013DB219D81A310015DEBB /* dnsmasq.conf */ = {isa = PBXFileReference; lastKnownFileType = text; name = dnsmasq.conf; path = ../../../../../../usr/local/etc/dnsmasq.conf; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sh; };
+		7B013DB319D8208B0015DEBB /* com.mrgray.dnsmasq_dev_killer.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = com.mrgray.dnsmasq_dev_killer.plist; path = dnsmasq/com.mrgray.dnsmasq_dev_killer.plist; sourceTree = "<group>"; };
+		7B013DB419D8208B0015DEBB /* com.mrgray.dnsmasq.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = com.mrgray.dnsmasq.plist; path = dnsmasq/com.mrgray.dnsmasq.plist; sourceTree = "<group>"; };
 		7B4055EB19352411008BB9ED /* dnsmasqKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dnsmasqKit.h; sourceTree = "<group>"; };
 		7B4055EC19352411008BB9ED /* dnsmasqKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dnsmasqKit.m; sourceTree = "<group>"; };
 		7B6FEED61934E51A00F3DBE7 /* dnsmasq.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = dnsmasq.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +148,9 @@
 		7B6FEEC71934E4A300F3DBE7 = {
 			isa = PBXGroup;
 			children = (
+				7B013DB319D8208B0015DEBB /* com.mrgray.dnsmasq_dev_killer.plist */,
+				7B013DB419D8208B0015DEBB /* com.mrgray.dnsmasq.plist */,
+				7B013DB219D81A310015DEBB /* dnsmasq.conf */,
 				7BC375D11934FE5F00087777 /* Resources */,
 				7BC375B81934EF7B00087777 /* dnsmasqapp.m */,
 				7B6FEEDF1934E51A00F3DBE7 /* libdnsmasq */,
@@ -321,7 +327,7 @@
 		7B6FEEC81934E4A300F3DBE7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Alex Gray";
 			};
 			buildConfigurationList = 7B6FEECB1934E4A300F3DBE7 /* Build configuration list for PBXProject "dnsmasq" */;
@@ -483,6 +489,7 @@
 		7B6FEEF91934E51A00F3DBE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = /;
@@ -503,6 +510,7 @@
 		7B6FEEFA1934E51A00F3DBE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DEPLOYMENT_LOCATION = YES;
 				DSTROOT = /;
@@ -524,6 +532,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEPLOYMENT_LOCATION = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
 				DSTROOT = /;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				HEADER_SEARCH_PATHS = (
@@ -541,6 +550,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEPLOYMENT_LOCATION = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
 				DSTROOT = /;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				HEADER_SEARCH_PATHS = (
