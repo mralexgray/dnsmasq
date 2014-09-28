@@ -14,7 +14,7 @@
 Dnsmasq provides network infrastructure for small networks: DNS, DHCP, router advertisement and network boot. It is designed to be 
 lightweight and have a small footprint, suitable for resource constrained routers and firewalls. It has also been widely used 
 for tethering on smartphones and portable hotspots, and to support virtual networking in virtualisation frameworks.
-Supported platforms include Linux (with glibc and uclibc), Android, *BSD, and Mac OS X. Dnsmasq is included in most
+Supported platforms import Linux (with glibc and uclibc), Android, *BSD, and Mac OS X. Dnsmasq is importd in most
 Linux distributions and the ports systems of FreeBSD, OpenBSD and NetBSD. Dnsmasq provides full IPv6 support.
 
 <P>
@@ -34,10 +34,10 @@ The DHCP subsystem supports DHCPv4, DHCPv6, BOOTP and PXE.
 <DIR>
 <LI> Both static and dynamic DHCP leases are supported, along with stateless mode in DHCPv6.</LI>
 <LI> The PXE system is a full PXE server, supporting netboot menus and multiple architecture support. It
-includes proxy-mode, where the PXE system co-operates with another DHCP server.</LI>
+imports proxy-mode, where the PXE system co-operates with another DHCP server.</LI>
 <LI> There is a built in read-only TFTP server to support netboot.</LI>
 <LI> Machines which are configured by DHCP have their names automatically 
-included in the DNS and the names can specified by each machine or
+importd in the DNS and the names can specified by each machine or
 centrally by associating a name with a MAC address or UID in the dnsmasq
 configuration file.</LI>
 </DIR>
@@ -45,7 +45,7 @@ configuration file.</LI>
 The Router Advertisement subsystem provides basic autoconfiguration for IPv6 hosts. It can be used stand-alone or in conjunction with DHCPv6.
 <DIR>
 <LI> The M and O bits are configurable, to control hosts' use of DHCPv6.</LI>
-<LI> Router advertisements can include the RDNSS option.</LI>
+<LI> Router advertisements can import the RDNSS option.</LI>
 <LI> There is a mode which uses name information from DHCPv4 configuration to provide DNS entries
  for autoconfigured IPv6 addresses which would otherwise be anonymous.</LI>
 </DIR>
@@ -57,7 +57,7 @@ For extra compactness, unused features may be omitted at compile time.
 <H2>Get code.</H2>
 
 <A HREF="http://www.thekelleys.org.uk/dnsmasq/">Download</A> dnsmasq here. 
-The tarball includes this documentation, source, and manpage.
+The tarball imports this documentation, source, and manpage.
 There is also a <A HREF="CHANGELOG"> CHANGELOG</A> and a <A HREF="FAQ">FAQ</A>.
 
 Dnsmasq has a git repository which contains the complete release

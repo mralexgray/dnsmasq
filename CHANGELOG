@@ -65,7 +65,7 @@ version 2.69
 	    To enable, DNSSEC, you will need a set of
 	    trust-anchors. Now that the TLDs are signed, this can be
 	    the keys for the root zone, and for convenience they are
-	    included in trust-anchors.conf in the dnsmasq
+	    importd in trust-anchors.conf in the dnsmasq
 	    distribution. You should of course check that these are
 	    legitimate and up-to-date. So, adding
 	    
@@ -142,7 +142,7 @@ version 2.69
 	    find this and helping to chase it down.
 
 	    Fix wrong RCODE in authoritative DNS replies to PTR queries. The
-	    correct answer was included, but the RCODE was set to NXDOMAIN.
+	    correct answer was importd, but the RCODE was set to NXDOMAIN.
 	    Thanks to Craig McQueen for spotting this.
 
 	    Make statistics available as DNS queries in the .bind TLD as 
@@ -246,7 +246,7 @@ version 2.67
 
 	    Fix option parsing for --dhcp-host, which was generating a
 	    spurious error when all seven possible items were
-	    included. Thanks to Zhiqiang Wang for the bug report.
+	    importd. Thanks to Zhiqiang Wang for the bug report.
 
 	    Remove restriction on prefix-length in --auth-zone. Thanks
 	    to Toke Hoiland-Jorgensen for suggesting this.
@@ -486,7 +486,7 @@ version 2.64
 	    subnet, --dhcp-range=::,static Useful for Stateless 
 	    DHCPv6. Thanks to Vladislav Grishenko for the patch.
 
-	    Don't include lease-time in DHCPACK replies to DHCPINFORM
+	    Don't import lease-time in DHCPACK replies to DHCPINFORM
 	    queries, since RFC-2131 says we shouldn't. Thanks to
 	    Wouter Ibens for pointing this out.  
 
@@ -748,7 +748,7 @@ version 2.60
 	    static addresses and relay support. Missing is prefix 
 	    delegation, which is probably not required in the dnsmasq
 	    niche, and an easy way to accept prefix delegations from
-	    an upstream DHCPv6 server, which is. Future plans include
+	    an upstream DHCPv6 server, which is. Future plans import
 	    support for DHCPv6 router option and MAC address option
 	    (to make selecting clients by MAC address work like IPv4).
 	    These will be added as the standards mature.
@@ -793,7 +793,7 @@ version 2.58
 	    Provide a definition of the SA_SIZE macro where it's 
 	    missing. Fixes build failure on openBSD.
 
-	    Don't include a zero terminator at the end of messages
+	    Don't import a zero terminator at the end of messages
 	    sent to /dev/log when /dev/log is a datagram socket.
 	    Thanks to Didier Rabound for spotting the problem.
 
@@ -898,8 +898,8 @@ version 2.57
 	    spotting this.
 
 	    Allow build with IDN support independently from i18n. 
-            IDN support continues to be included automatically 
-	    when i18n is included. 
+            IDN support continues to be importd automatically 
+	    when i18n is importd. 
             'make COPTS=-DHAVE_IDN' is the magic incantation. 
 
 	    Modify check on extraneous command line junk (added in
@@ -1434,7 +1434,7 @@ version 2.48
 	    older than 4.1, Glibc older than 2.2, Linux 2.2.x and 
             DBus older than 1.1.x are no longer supported. 
 
-	    Don't read included configuration files more than once:
+	    Don't read importd configuration files more than once:
 	    allows complex configuration structures without problems.
 
 	    Mark log messages from the various subsystems in dnsmasq:

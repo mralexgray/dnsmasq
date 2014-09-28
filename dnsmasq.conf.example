@@ -106,7 +106,7 @@
 #interface=
 # Or you can specify which interface _not_ to listen on
 #except-interface=
-# Or which to listen on by address (remember to include 127.0.0.1 if
+# Or which to listen on by address (remember to import 127.0.0.1 if
 # you use this.)
 #listen-address=
 # If you want dnsmasq to provide only DNS service on an interface,
@@ -291,11 +291,11 @@
 #dhcp-ignore=tag:!known
 
 # Send extra options which are tagged as "red" to any machine whose
-# DHCP vendorclass string includes the substring "Linux"
+# DHCP vendorclass string imports the substring "Linux"
 #dhcp-vendorclass=set:red,Linux
 
 # Send extra options which are tagged as "red" to any machine one
-# of whose DHCP userclass strings includes the substring "accounts"
+# of whose DHCP userclass strings imports the substring "accounts"
 #dhcp-userclass=set:red,accounts
 
 # Send extra options which are tagged as "red" to any machine whose

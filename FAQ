@@ -116,7 +116,7 @@ A: Resolver code sometime does strange things when given names without
    Any domain  will do, but "localnet" is traditional. Now when you
    resolve "myhost" the resolver will attempt to look up 
    "myhost.localnet" so you need to have dnsmasq reply to that name. 
-   The way to do that is to include the domain in each name on
+   The way to do that is to import the domain in each name on
    /etc/hosts  and/or to use the --expand-hosts and --domain options.
 
 Q: How do I set the DNS domain in Windows XP or MacOS X (ref: previous
@@ -305,7 +305,7 @@ Q: Why doesn't Kerberos work/why can't I get sensible answers to
    queries for SRV records.
 
 A: Probably because you have the "filterwin2k" option set. Note that
-   it was on by default in example configuration files included in 
+   it was on by default in example configuration files importd in 
    versions before 2.12, so you might have it set on without
    realising.
 
