@@ -42,9 +42,11 @@
 #define   VERSION "1.0.AZ"
 #define COPYRIGHT "Copyright (c) 2000-2014 Simon Kelley"
 
+@import Darwin;
+
 /* get these before config.h  for IPv6 stuff... */
-#import <sys/types.h> 
-#import <sys/socket.h>
+//#import <sys/types.h> 
+//#import <sys/socket.h>
 
 /* #ifdef __APPLE__ */
 
@@ -52,10 +54,10 @@
 #define  __APPLE_USE_RFC_3542
 #endif                        /* __APPLE_USE_RFC_3542 __APPLE__ */
 
-#import <netinet/in.h>
+//#import <netinet/in.h>
 
 /* Also needed before config.h. */
-#import <getopt.h>
+//#import <getopt.h>
 
 //#import "config.h"
 

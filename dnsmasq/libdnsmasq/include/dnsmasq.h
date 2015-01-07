@@ -18,7 +18,7 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
+#import "config.h"
 #import "ip6addr.h"
 
 typedef unsigned char u8;

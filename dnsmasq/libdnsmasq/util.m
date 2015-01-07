@@ -34,8 +34,7 @@ static u32 in[12];
 static u32 out[8];
 static int outleft = 0;
 
-void rand_init()
-{
+void rand_init() {
   int fd = open(RANDFILE, O_RDONLY);
   
   if (fd == -1 ||
@@ -49,8 +48,7 @@ void rand_init()
 #define ROTATE(x,b) (((x) << (b)) | ((x) >> (32 - (b))))
 #define MUSH(i,b) x = t[i] += (((x ^ seed[i]) + sum) ^ ROTATE(x,b));
 
-static void surf(void)
-{
+static void surf(void) {
   u32 t[12]; u32 x; u32 sum = 0;
   int r; int i; int loop;
 
@@ -68,8 +66,7 @@ static void surf(void)
   }
 }
 
-unsigned short rand16(void)
-{
+unsigned short rand16(void) {
   if (!outleft) 
     {
       if (!++in[0]) if (!++in[1]) if (!++in[2]) ++in[3];
@@ -80,8 +77,7 @@ unsigned short rand16(void)
   return (unsigned short) out[--outleft];
 }
 
-u64 rand64(void)
-{
+u64 rand64(void) {
   static int outleft = 0;
 
   if (outleft < 2)
@@ -96,8 +92,7 @@ u64 rand64(void)
   return (u64)out[outleft+1] + (((u64)out[outleft]) << 32);
 }
 
-static int check_name(char *in)
-{
+static int check_name(char *in) {
   /* remove trailing . 
      also fail empty string and label > 63 chars */
   size_t dotgap = 0, l = strlen(in);
@@ -139,8 +134,7 @@ static int check_name(char *in)
    so check for legal char a-z A-Z 0-9 - _ 
    Note that this may receive a FQDN, so only check the first label 
    for the tighter criteria. */
-int legal_hostname(char *name)
-{
+int legal_hostname(char *name) {
   char c;
   int first;
 
@@ -168,8 +162,7 @@ int legal_hostname(char *name)
   return 1;
 }
   
-char *canonicalise(char *in, int *nomem)
-{
+char *canonicalise(char *in, int *nomem) {
   char *ret = NULL;
 #if defined(LOCALEDIR) || defined(HAVE_IDN)
   int rc;
@@ -205,8 +198,7 @@ char *canonicalise(char *in, int *nomem)
   return ret;
 }
 
-unsigned char *do_rfc1035_name(unsigned char *p, char *sval)
-{
+unsigned char *do_rfc1035_name(unsigned char *p, char *sval) {
   int j;
   
   while (sval && *sval)
@@ -222,26 +214,23 @@ unsigned char *do_rfc1035_name(unsigned char *p, char *sval)
 }
 
 /* for use during startup */
-void *safe_malloc(size_t size)
-{
+void *safe_malloc(size_t size) {
   void *ret = malloc(size);
   
   if (!ret)
     die(_("could not get memory"), NULL, EC_NOMEM);
      
   return ret;
-}    
+}
 
-void safe_pipe(int *fd, int read_noblock)
-{
+void safe_pipe(int *fd, int read_noblock) {
   if (pipe(fd) == -1 || 
       !fix_fd(fd[1]) ||
       (read_noblock && !fix_fd(fd[0])))
     die(_("cannot create pipe: %s"), NULL, EC_MISC);
 }
 
-void *whine_malloc(size_t size)
-{
+void *whine_malloc(size_t size) {
   void *ret = malloc(size);
 
   if (!ret)
@@ -250,8 +239,7 @@ void *whine_malloc(size_t size)
   return ret;
 }
 
-int sockaddr_isequal(union mysockaddr *s1, union mysockaddr *s2)
-{
+int sockaddr_isequal(union mysockaddr *s1, union mysockaddr *s2) {
   if (s1->sa.sa_family == s2->sa.sa_family)
     { 
       if (s1->sa.sa_family == AF_INET &&
@@ -268,8 +256,7 @@ int sockaddr_isequal(union mysockaddr *s1, union mysockaddr *s2)
   return 0;
 }
 
-int sa_len(union mysockaddr *addr)
-{
+int sa_len(union mysockaddr *addr) {
 #ifdef HAVE_SOCKADDR_SA_LEN
   return addr->sa.sa_len;
 #else
@@ -283,8 +270,7 @@ int sa_len(union mysockaddr *addr)
 }
 
 /* don't use strcasecmp and friends here - they may be messed up by LOCALE */
-int hostname_isequal(const char *a, const char *b)
-{
+int hostname_isequal(const char *a, const char *b) {
   unsigned int c1, c2;
   
   do {

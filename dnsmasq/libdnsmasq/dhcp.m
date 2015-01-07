@@ -141,7 +141,7 @@ void dhcp_packet(time_t now, int pxe_fd)
   struct ifreq ifr;
   struct msghdr msg;
   struct sockaddr_in dest;
-  struct cmsghdr *cmptr;
+  __unused struct cmsghdr *cmptr;
   struct iovec iov;
   ssize_t sz; 
   int iface_index = 0, unicast_dest = 0, is_inform = 0;

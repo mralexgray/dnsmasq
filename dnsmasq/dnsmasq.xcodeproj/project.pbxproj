@@ -71,7 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		7B013DB219D81A310015DEBB /* dnsmasq.conf */ = {isa = PBXFileReference; lastKnownFileType = text; name = dnsmasq.conf; path = ../../../../../../usr/local/etc/dnsmasq.conf; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sh; };
+		7B013DB219D81A310015DEBB /* dnsmasq.conf.provided */ = {isa = PBXFileReference; lastKnownFileType = text; name = dnsmasq.conf.provided; path = ../dnsmasq.conf.provided; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sh; };
 		7B013DB319D8208B0015DEBB /* com.mrgray.dnsmasq_dev_killer.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = com.mrgray.dnsmasq_dev_killer.plist; path = dnsmasq/com.mrgray.dnsmasq_dev_killer.plist; sourceTree = "<group>"; };
 		7B013DB419D8208B0015DEBB /* com.mrgray.dnsmasq.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = com.mrgray.dnsmasq.plist; path = dnsmasq/com.mrgray.dnsmasq.plist; sourceTree = "<group>"; };
 		7B4055EB19352411008BB9ED /* dnsmasqKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dnsmasqKit.h; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 			children = (
 				7B013DB319D8208B0015DEBB /* com.mrgray.dnsmasq_dev_killer.plist */,
 				7B013DB419D8208B0015DEBB /* com.mrgray.dnsmasq.plist */,
-				7B013DB219D81A310015DEBB /* dnsmasq.conf */,
+				7B013DB219D81A310015DEBB /* dnsmasq.conf.provided */,
 				7BC375D11934FE5F00087777 /* Resources */,
 				7BC375B81934EF7B00087777 /* dnsmasqapp.m */,
 				7B6FEEDF1934E51A00F3DBE7 /* libdnsmasq */,
@@ -310,6 +310,7 @@
 				7BC375AF1934EF7B00087777 /* Sources */,
 				7BC375B01934EF7B00087777 /* Frameworks */,
 				7BC375B11934EF7B00087777 /* CopyFiles */,
+				7B6057881A5DF16600EACFEF /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -349,6 +350,22 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7B6057881A5DF16600EACFEF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mkdir -p /usr/local/etc\ncp -f \"${SRCROOT}/../dnsmasq.conf.provided\" /usr/local/etc/dnsmasq.conf";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		7B6FEED21934E51A00F3DBE7 /* Sources */ = {
