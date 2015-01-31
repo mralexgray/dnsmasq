@@ -1,17 +1,20 @@
 
-@import Foundation;
+@import AppKit;
 @import Darwin;
+
 #ifndef DNSMASQ_COMPILE_OPTS
 #define DNSMASQ_COMPILE_OPTS 1
 #endif
-  //#import "dnsmasq/config.h"
+
+//#import "dnsmasq/config.h"
 #import <dnsmasq.h>
+
 static volatile pid_t pid = 0;
 static volatile int pipewrite;
-static      int   set_dns_listeners( time_t now, fd_set *set, int *maxfdp );
-static     void         async_event( int pipe, time_t now );
+static      int   set_dns_listeners( time_t now,  fd_set *set, int *maxfdp );
+static     void         async_event( int pipe,    time_t now );
 static     void check_dns_listeners( fd_set *set, time_t now );
-static      int          read_event( int fd, struct event_desc *evp, char **msg );
+static      int          read_event( int fd,      struct event_desc *evp, char **msg );
 static     void         fatal_event( struct event_desc *ev, char *msg );
 static     void         sig_handler( int sig );
 
@@ -19,19 +22,28 @@ int main (int argc, char **argv) {
 
   @autoreleasepool {
 
-    time_t now;
+//    [dnsmasqKit monitorFile:@"/usr/local/etc/dnsmasq.conf" then:^(NSString *path) {
+//
+//      NSBeep();
+//      NSLog(@"path changed: %@", path);
+//
+//    }];
+
+              time_t now;
     struct sigaction sigact;
     struct     iname *if_tmp;
-    int piperead, log_err, i,
-    pipefd[2], err_pipe[2],
-    bind_fallback  = 0,
-    max_fd         = (int)sysconf(_SC_OPEN_MAX);
-    struct passwd *ent_pw        = NULL;
-    struct group *gp            = NULL;
-    char *baduser       = NULL;
+
+    int piperead, log_err, i, pipefd[2], err_pipe[2],
+            bind_fallback = 0,
+                   max_fd = (int)sysconf(_SC_OPEN_MAX);
+
+    struct passwd *ent_pw = NULL;
+    struct group *gp      = NULL;
+    char *baduser         = NULL;
+
 #if defined(HAVE_SCRIPT)
     uid_t script_uid = 0,
-    script_gid = 0;
+          script_gid = 0;
 #endif
 #if defined(HAVE_DHCP) || defined(HAVE_DHCP6)
     struct dhcp_context *context;
@@ -57,16 +69,13 @@ int main (int argc, char **argv) {
     umask(022); /* known umask, create leases and pid files as 0644 */
     read_opts(argc, argv, compile_opts);
 
-    if (daemon->edns_pktsz < PACKETSZ)
-      daemon->edns_pktsz = PACKETSZ;
-    daemon->packet_buff_sz = daemon->edns_pktsz > DNSMASQ_PACKETSZ ?
-    daemon->edns_pktsz : DNSMASQ_PACKETSZ;
+    if (daemon->edns_pktsz < PACKETSZ) daemon->edns_pktsz = PACKETSZ;
+    daemon->packet_buff_sz = daemon->edns_pktsz > DNSMASQ_PACKETSZ ? daemon->edns_pktsz : DNSMASQ_PACKETSZ;
     daemon->packet         = safe_malloc(daemon->packet_buff_sz);
     daemon->addrbuff       = safe_malloc(ADDRSTRLEN);
 #ifdef HAVE_DHCP
     daemon->lease_file = daemon->lease_file ?:
-    daemon->dhcp || daemon->dhcp6 ? LEASEFILE
-    : daemon->lease_file;
+    daemon->dhcp || daemon->dhcp6 ? LEASEFILE : daemon->lease_file;
 #endif
 
     /* Close any file descriptors we inherited apart from std{in|out|err}
@@ -135,44 +144,38 @@ int main (int argc, char **argv) {
 
 #ifdef HAVE_DHCP6
     if (daemon->dhcp6) {
+
       daemon->doing_ra = option_bool(OPT_RA);
 
       for (context = daemon->dhcp6; context; context = context->next)
       {
-        if (context->flags & CONTEXT_DHCP)
-          daemon->doing_dhcp6 = 1;
-        if (context->flags & CONTEXT_RA)
-          daemon->doing_ra = 1;
+        if (context->flags & CONTEXT_DHCP)  daemon->doing_dhcp6 = 1;
+        if (context->flags & CONTEXT_RA)    daemon->doing_ra = 1;
+
 #if !defined(HAVE_LINUX_NETWORK) && !defined(HAVE_BSD_NETWORK)
-        if (context->flags & CONTEXT_TEMPLATE)
-          die (_("dhcp-range constructor not available on this platform"), NULL, EC_BADCONF);
+        if (context->flags & CONTEXT_TEMPLATE) die (_("dhcp-range constructor not available on this platform"), NULL, EC_BADCONF);
 #endif
       }
     }
 #endif
 
 #ifdef HAVE_DHCP
-    /* Note that order matters here, we must call lease_init before
-     creating any file descriptors which shouldn't be leaked
-     to the lease-script init process. We need to call common_init
-     before lease_init to allocate buffers it uses.*/
+    /* Note that order matters here, we must call lease_init before creating any file descriptors which shouldn't be leaked to the lease-script init process. We need to call common_init before lease_init to allocate buffers it uses.
+     */
     if (daemon->dhcp || daemon->doing_dhcp6 || daemon->relay4 || daemon->relay6)
     {
       dhcp_common_init();
-      if (daemon->dhcp || daemon->doing_dhcp6)
-        lease_init(now);
+      if (daemon->dhcp || daemon->doing_dhcp6) lease_init(now);
     }
 
-    if (daemon->dhcp || daemon->relay4)
-      dhcp_init();
+    if (daemon->dhcp || daemon->relay4) dhcp_init();
 
-#  ifdef HAVE_DHCP6
-    if (daemon->doing_ra || daemon->doing_dhcp6 || daemon->relay6)
-      ra_init(now);
+#ifdef HAVE_DHCP6
+    if (daemon->doing_ra || daemon->doing_dhcp6 || daemon->relay6) ra_init(now);
 
-    if (daemon->doing_dhcp6 || daemon->relay6)
-      dhcp6_init();
-#  endif
+    if (daemon->doing_dhcp6 || daemon->relay6) dhcp6_init();
+
+#endif
 #endif
 #ifdef HAVE_IPSET
     if (daemon->ipsets)
@@ -183,14 +186,12 @@ int main (int argc, char **argv) {
 #elif defined(HAVE_BSD_NETWORK)
     route_init();
 #endif
-    if (option_bool(OPT_NOWILD) && option_bool(OPT_CLEVERBIND))
-      die(_("cannot set --bind-interfaces and --bind-dynamic"), NULL, EC_BADCONF);
+    if (option_bool(OPT_NOWILD) && option_bool(OPT_CLEVERBIND)) die(_("cannot set --bind-interfaces and --bind-dynamic"), NULL, EC_BADCONF);
 
-    if (!enumerate_interfaces(1) || !enumerate_interfaces(0))
-      die(_("failed to find list of interfaces: %s"), NULL, EC_MISC);
+    if (!enumerate_interfaces(1) || !enumerate_interfaces(0)) die(_("failed to find list of interfaces: %s"), NULL, EC_MISC);
 
-    if (option_bool(OPT_NOWILD) || option_bool(OPT_CLEVERBIND))
-    {
+    if (option_bool(OPT_NOWILD) || option_bool(OPT_CLEVERBIND)) {
+
       create_bound_listeners(1);
 
       if (!option_bool(OPT_CLEVERBIND))
@@ -268,27 +269,22 @@ int main (int argc, char **argv) {
         script_uid = ent_pw->pw_uid;
         script_gid = ent_pw->pw_gid;
       }
-      else
-        baduser = daemon->scriptuser;
+      else baduser = daemon->scriptuser;
     }
 #endif
 
-    if (daemon->username && !(ent_pw = getpwnam(daemon->username)))
-      baduser = daemon->username;
-    else if (daemon->groupname && !(gp = getgrnam(daemon->groupname)))
-      baduser = daemon->groupname;
-    if (baduser)
-      die(_("unknown user or group: %s"), baduser, EC_BADCONF);
+    if (daemon->username && !(ent_pw = getpwnam(daemon->username)))     baduser = daemon->username;
+    else if (daemon->groupname && !(gp = getgrnam(daemon->groupname)))  baduser = daemon->groupname;
+
+    if (baduser) die(_("unknown user or group: %s"), baduser, EC_BADCONF);
 
     /* implement group defaults, "dip" if available, or group associated with uid */
     if (!daemon->group_set && !gp)
     {
-      if (!(gp = getgrnam(CHGRP)) && ent_pw)
-        gp = getgrgid(ent_pw->pw_gid);
+      if (!(gp = getgrnam(CHGRP)) && ent_pw) gp = getgrgid(ent_pw->pw_gid);
 
       /* for error message */
-      if (gp)
-        daemon->groupname = gp->gr_name;
+      if (gp) daemon->groupname = gp->gr_name;
     }
 #if defined(HAVE_LINUX_NETWORK)
     /* determine capability API version here, while we can still
@@ -545,12 +541,9 @@ int main (int argc, char **argv) {
       }
     }
 #endif
-    if (daemon->port == 0)
-      my_syslog(LOG_INFO, _("started, version %s DNS disabled"), VERSION);
-    else if (daemon->cachesize != 0)
-      my_syslog(LOG_INFO, _("started, version %s cachesize %d"), VERSION, daemon->cachesize);
-    else
-      my_syslog(LOG_INFO, _("started, version %s cache disabled"), VERSION);
+    daemon->port ?      my_syslog(LOG_INFO, _("started, version %s DNS disabled"), VERSION) :
+    daemon->cachesize ? my_syslog(LOG_INFO, _("started, version %s cachesize %d"), VERSION, daemon->cachesize) :
+                        my_syslog(LOG_INFO, _("started, version %s cache disabled"), VERSION);
 
     my_syslog(LOG_INFO, _("compile time options: %s"), compile_opts);
 
@@ -563,25 +556,22 @@ int main (int argc, char **argv) {
         my_syslog(LOG_INFO, _("DBus support enabled: bus connection pending"));
     }
 #endif
-    if (option_bool(OPT_LOCAL_SERVICE))
-      my_syslog(LOG_INFO, _("DNS service limited to local subnets"));
+
+    if (option_bool(OPT_LOCAL_SERVICE)) my_syslog(LOG_INFO, _("DNS service limited to local subnets"));
 
 #ifdef HAVE_DNSSEC
-    if (option_bool(OPT_DNSSEC_VALID))
-    {
+    if (option_bool(OPT_DNSSEC_VALID)) {
+
       my_syslog(LOG_INFO, _("DNSSEC validation enabled"));
-      if (option_bool(OPT_DNSSEC_TIME))
-        my_syslog(LOG_INFO, _("DNSSEC signature timestamps not checked until first cache reload"));
+      if (option_bool(OPT_DNSSEC_TIME)) my_syslog(LOG_INFO, _("DNSSEC signature timestamps not checked until first cache reload"));
     }
 #endif
-    if (log_err != 0)
-      my_syslog(LOG_WARNING, _("warning: failed to change owner of %s: %s"),
-                daemon->log_file, strerror(log_err));
+    if (log_err) my_syslog(LOG_WARNING, _("warning: failed to change owner of %s: %s"), daemon->log_file, strerror(log_err));
 
-    if (bind_fallback)
-      my_syslog(LOG_WARNING, _("setting --bind-interfaces option because of OS limitations"));
-    if (option_bool(OPT_NOWILD))
-      warn_bound_listeners();
+    if (bind_fallback) my_syslog(LOG_WARNING, _("setting --bind-interfaces option because of OS limitations"));
+
+    if (option_bool(OPT_NOWILD)) warn_bound_listeners();
+
     warn_int_names();
 
     if (!option_bool(OPT_NOWILD))
@@ -605,7 +595,7 @@ int main (int argc, char **argv) {
       log_context(AF_INET, context);
     for (relay = daemon->relay4; relay; relay = relay->next)
       log_relay(AF_INET, relay);
-#  ifdef HAVE_DHCP6
+#ifdef HAVE_DHCP6
     for (context = daemon->dhcp6; context; context = context->next)
       log_context(AF_INET6, context);
     for (relay = daemon->relay6; relay; relay = relay->next)
@@ -616,11 +606,11 @@ int main (int argc, char **argv) {
 
     if (option_bool(OPT_RA))
       my_syslog(MS_DHCP | LOG_INFO, _("IPv6 router advertisement enabled"));
-#  endif
-#  ifdef HAVE_LINUX_NETWORK
+#endif
+#ifdef HAVE_LINUX_NETWORK
     if (did_bind)
       my_syslog(MS_DHCP | LOG_INFO, _("DHCP, sockets bound exclusively to interface %s"), bound_device);
-#  endif
+#endif
     /* after dhcp_contruct_contexts */
     if (daemon->dhcp || daemon->doing_dhcp6)
       lease_find_interfaces(now);
@@ -637,26 +627,20 @@ int main (int argc, char **argv) {
                 daemon->tftp_prefix ? daemon->tftp_prefix: "",
                 option_bool(OPT_TFTP_SECURE) ? _("secure mode") : "");
 
-      /* This is a guess, it assumes that for small limits,
-       disjoint files might be served, but for large limits,
-       a single file will be sent to may clients (the file only needs
-       one fd). */
+      // This is a guess, it assumes that for small limits, disjoint files might be served, but for large limits, a single file will be sent to may clients (the file only needs one fd).
+
       max_fd -= 30; /* use other than TFTP */
 
-      if (max_fd < 0)
-        max_fd = 5;
-      else if (max_fd < 100)
-        max_fd = max_fd/2;
-      else
-        max_fd = max_fd - 20;
+      max_fd = max_fd < 0   ? 5 :
+               max_fd < 100 ? max_fd/2 :
+                              max_fd - 20;
 
-      /* if we have to use a limited range of ports,
-       that will limit the number of transfers */
-      if (daemon->start_tftp_port != 0 &&
-          daemon->end_tftp_port - daemon->start_tftp_port + 1 < max_fd)
+      // if we have to use a limited range of ports, that will limit the number of transfers
+
+      if (daemon->start_tftp_port != 0 && daemon->end_tftp_port - daemon->start_tftp_port + 1 < max_fd)
         max_fd = daemon->end_tftp_port - daemon->start_tftp_port + 1;
-      if (daemon->tftp_max > max_fd)
-      {
+
+      if (daemon->tftp_max > max_fd) {
         daemon->tftp_max = max_fd;
         my_syslog(MS_TFTP | LOG_WARNING,
                   _("restricting maximum simultaneous TFTP transfers to %d"),
@@ -673,6 +657,7 @@ int main (int argc, char **argv) {
 
     pid = getpid();
 
+//    dispatch_main()
     while (1)
     {
       int maxfd = -1;
@@ -683,29 +668,21 @@ int main (int argc, char **argv) {
       FD_ZERO(&wset);
       FD_ZERO(&eset);
 
-      /* if we are out of resources, find how long we have to wait
-       for some to come free, we'll loop around then and restart
-       listening for queries */
-      if ((t.tv_sec = set_dns_listeners(now, &rset, &maxfd)) != 0)
-      {
-        t.tv_usec = 0;
-        tp = &t;
-      }
-      /* Whilst polling for the dbus, or doing a tftp transfer, wake every quarter second */
-      if (daemon->tftp_trans ||
-          (option_bool(OPT_DBUS) && !daemon->dbus))
-      {
+      /// if we are out of resources, find how long we have to wait for some to come free, we'll loop around then and restart listening for queries
+
+      if ((t.tv_sec = set_dns_listeners(now, &rset, &maxfd)) != 0) { t.tv_usec = 0; tp = &t; }
+
+      /// Whilst polling for the dbus, or doing a tftp transfer, wake every quarter second
+
+      if (daemon->tftp_trans || (option_bool(OPT_DBUS) && !daemon->dbus)) {
         t.tv_sec = 0;
         t.tv_usec = 250000;
         tp = &t;
       }
-      /* Wake every second whilst waiting for DAD to complete */
-      else if (is_dad_listeners())
-      {
-        t.tv_sec = 1;
-        t.tv_usec = 0;
-        tp = &t;
-      }
+
+      /// Wake every second whilst waiting for DAD to complete
+      else if (is_dad_listeners()) { t.tv_sec = 1; t.tv_usec = 0; tp = &t; }
+
 #ifdef HAVE_DBUS
       set_dbus_listeners(&maxfd, &rset, &wset, &eset);
 #endif
@@ -744,27 +721,26 @@ int main (int argc, char **argv) {
       FD_SET(piperead, &rset);
       bump_maxfd(piperead, &maxfd);
 #ifdef HAVE_DHCP
-#  ifdef HAVE_SCRIPT
-      while (helper_buf_empty() && do_script_run(now));
-#    ifdef HAVE_TFTP
-      while (helper_buf_empty() && do_tftp_script_run());
-#    endif
+  #ifdef HAVE_SCRIPT
+          while (helper_buf_empty() && do_script_run(now));
+    #ifdef HAVE_TFTP
+          while (helper_buf_empty() && do_tftp_script_run());
+    #endif
       if (!helper_buf_empty())
       {
         FD_SET(daemon->helperfd, &wset);
         bump_maxfd(daemon->helperfd, &maxfd);
       }
-#  else
+  #else
       /* need this for other side-effects */
       while (do_script_run(now));
-#    ifdef HAVE_TFTP
-      while (do_tftp_script_run());
-#    endif
-#  endif
+    #ifdef HAVE_TFTP
+          while (do_tftp_script_run());
+    #endif
+  #endif
 #endif
 
-      /* must do this just before select(), when we know no
-       more calls to my_syslog() can occur */
+      /* must do this just before select(), when we know no more calls to my_syslog() can occur */
       set_log_writer(&wset, &maxfd);
 
       if (select(maxfd+1, &rset, &wset, &eset, tp) < 0)
@@ -832,19 +808,20 @@ int main (int argc, char **argv) {
         if (daemon->pxefd != -1 && FD_ISSET(daemon->pxefd, &rset))
           dhcp_packet(now, 1);
       }
-#ifdef HAVE_DHCP6
-      if ((daemon->doing_dhcp6 || daemon->relay6) && FD_ISSET(daemon->dhcp6fd, &rset))
-        dhcp6_packet(now);
-      if (daemon->doing_ra && FD_ISSET(daemon->icmp6fd, &rset))
-        icmp6_packet(now);
-#endif
-#  ifdef HAVE_SCRIPT
-      if (daemon->helperfd != -1 && FD_ISSET(daemon->helperfd, &wset))
-        helper_write();
-#  endif
+  #ifdef HAVE_DHCP6
+        if ((daemon->doing_dhcp6 || daemon->relay6) && FD_ISSET(daemon->dhcp6fd, &rset))
+          dhcp6_packet(now);
+        if (daemon->doing_ra && FD_ISSET(daemon->icmp6fd, &rset))
+          icmp6_packet(now);
+  #endif
+  #ifdef HAVE_SCRIPT
+        if (daemon->helperfd != -1 && FD_ISSET(daemon->helperfd, &wset))
+          helper_write();
+  #endif
 #endif
     }
   } // END DNSMASQ
+
   return 0;
 }
 
@@ -1019,7 +996,7 @@ static void async_event(int pipe, time_t now) {
   }
 }
 
-  /// NOTE: the memory used to return msg is leaked: use msgs in events only to describe fatal errors.
+// NOTE: the memory used to return msg is leaked: use msgs in events only to describe fatal errors.
 static  int          read_event(int fd, struct event_desc *evp, char **msg) {
   char *buf;
   if (!read_write(fd, (unsigned char *)evp, sizeof(struct event_desc), 1))
@@ -1037,17 +1014,18 @@ static  int          read_event(int fd, struct event_desc *evp, char **msg) {
   return 1;
 }
 static void check_dns_listeners(fd_set *set, time_t now)                    {
+
   struct serverfd *serverfdp;
   struct listener *listener;
   int i;
+
   for (serverfdp = daemon->sfds; serverfdp; serverfdp = serverfdp->next)
     if (FD_ISSET(serverfdp->fd, set))
       reply_query(serverfdp->fd, serverfdp->source_addr.sa.sa_family, now);
 
   if (daemon->port != 0 && !daemon->osport)
     for (i = 0; i < RANDOM_SOCKS; i++)
-      if (daemon->randomsocks[i].refcount != 0 &&
-          FD_ISSET(daemon->randomsocks[i].fd, set))
+      if (daemon->randomsocks[i].refcount != 0 && FD_ISSET(daemon->randomsocks[i].fd, set))
         reply_query(daemon->randomsocks[i].fd, daemon->randomsocks[i].family, now);
 
   for (listener = daemon->listeners; listener; listener = listener->next)
@@ -1059,8 +1037,7 @@ static void check_dns_listeners(fd_set *set, time_t now)                    {
     if (listener->tftpfd != -1 && FD_ISSET(listener->tftpfd, set))
       tftp_request(listener, now);
 #endif
-    if (listener->tcpfd != -1 && FD_ISSET(listener->tcpfd, set))
-    {
+    if (listener->tcpfd != -1 && FD_ISSET(listener->tcpfd, set)) {
       int confd, client_ok = 1;
       struct irec *iface = NULL;
       pid_t p;
@@ -1089,10 +1066,8 @@ static void check_dns_listeners(fd_set *set, time_t now)                    {
 
       enumerate_interfaces(0);
 
-      if (option_bool(OPT_NOWILD))
-        iface = listener->iface; /* May be NULL */
-      else
-      {
+      if (option_bool(OPT_NOWILD)) iface = listener->iface; /* May be NULL */
+      else {
         int if_index;
         char intr_name[IF_NAMESIZE];
 
@@ -1133,7 +1108,6 @@ static void check_dns_listeners(fd_set *set, time_t now)                    {
             client_ok = 0;
         }
       }
-
       if (!client_ok)
       {
         shutdown(confd, SHUT_RDWR);
@@ -1193,8 +1167,7 @@ static void check_dns_listeners(fd_set *set, time_t now)                    {
         shutdown(confd, SHUT_RDWR);
         close(confd);
 
-        if (buff)
-          free(buff);
+        if (buff) free(buff);
 
         for (s = daemon->servers; s; s = s->next)
           if (s->tcpfd != -1)
@@ -1203,11 +1176,7 @@ static void check_dns_listeners(fd_set *set, time_t now)                    {
             close(s->tcpfd);
           }
 #ifndef NO_FORK
-        if (!option_bool(OPT_DEBUG))
-        {
-          flush_log();
-          _exit(0);
-        }
+        if (!option_bool(OPT_DEBUG)) { flush_log(); _exit(0); }
 #endif
       }
     }
