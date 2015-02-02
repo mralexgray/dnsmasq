@@ -21,6 +21,15 @@
 #import "config.h"
 #import "ip6addr.h"
 
+@import Foundation;
+
+@interface dnsmasqKit : NSObject // AtoZSingleton
+
++ (void) monitorFile:(NSString*)path then:(void(^)(NSString*))dothis;
+
+@end
+
+
 typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned int u32;

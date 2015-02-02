@@ -28,17 +28,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7B6FEEE81934E51A00F3DBE7"
-               BuildableName = "libdnsmasqTests.xctest"
-               BlueprintName = "libdnsmasqTests"
-               ReferencedContainer = "container:dnsmasq.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7B6FEED51934E51A00F3DBE7"
+            BuildableName = "dnsmasq.dylib"
+            BlueprintName = "libdnsmasq"
+            ReferencedContainer = "container:dnsmasq.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -67,6 +66,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "7B6FEED51934E51A00F3DBE7"
+            BuildableName = "dnsmasq.dylib"
+            BlueprintName = "libdnsmasq"
+            ReferencedContainer = "container:dnsmasq.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

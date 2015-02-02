@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B013DB119D817BC0015DEBB /* netlink.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF5E1934E6EC00F3DBE7 /* netlink.m */; };
 		7B4055ED19352411008BB9ED /* dnsmasqKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B4055EB19352411008BB9ED /* dnsmasqKit.h */; };
+		7B6057891A5DFC3D00EACFEF /* dnsmasqKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4055EC19352411008BB9ED /* dnsmasqKit.m */; };
 		7B6FEF691934E6EC00F3DBE7 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B6FEF451934E6EC00F3DBE7 /* config.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B6FEF6A1934E6EC00F3DBE7 /* dhcp-protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B6FEF461934E6EC00F3DBE7 /* dhcp-protocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B6FEF6B1934E6EC00F3DBE7 /* dhcp6-protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B6FEF471934E6EC00F3DBE7 /* dhcp6-protocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,7 +44,6 @@
 		7B6FEF8A1934E6EC00F3DBE7 /* tftp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF671934E6EC00F3DBE7 /* tftp.m */; };
 		7B6FEF8B1934E6EC00F3DBE7 /* util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF681934E6EC00F3DBE7 /* util.m */; };
 		7BC375AE1934EEE100087777 /* dnsmasqlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC375AD1934EEE100087777 /* dnsmasqlib.m */; };
-		7BC375B61934EF7B00087777 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BC375B51934EF7B00087777 /* Foundation.framework */; };
 		7BC375B91934EF7B00087777 /* dnsmasqapp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC375B81934EF7B00087777 /* dnsmasqapp.m */; };
 		7BC375C31934F3A100087777 /* dnsmasq.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6FEED61934E51A00F3DBE7 /* dnsmasq.dylib */; };
 /* End PBXBuildFile section */
@@ -57,18 +57,6 @@
 			remoteInfo = libdnsmasq;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		7BC375B11934EF7B00087777 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		7B013DB219D81A310015DEBB /* dnsmasq.conf.provided */ = {isa = PBXFileReference; lastKnownFileType = text; name = dnsmasq.conf.provided; path = ../dnsmasq.conf.provided; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sh; };
@@ -113,7 +101,6 @@
 		7B6FEF681934E6EC00F3DBE7 /* util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = util.m; sourceTree = "<group>"; };
 		7BC375AD1934EEE100087777 /* dnsmasqlib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dnsmasqlib.m; sourceTree = "<group>"; };
 		7BC375B31934EF7B00087777 /* dnsmasq */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = dnsmasq; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BC375B51934EF7B00087777 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		7BC375B81934EF7B00087777 /* dnsmasqapp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = dnsmasqapp.m; path = dnsmasq/dnsmasqapp.m; sourceTree = "<group>"; };
 		7BC375C41934F83700087777 /* dnsmasq.8 */ = {isa = PBXFileReference; lastKnownFileType = text; name = dnsmasq.8; path = ../man/dnsmasq.8; sourceTree = "<group>"; };
 		7BC375C51934F83700087777 /* CHANGELOG */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHANGELOG; path = ../CHANGELOG; sourceTree = "<group>"; };
@@ -123,22 +110,15 @@
 		7BC375C91934F83800087777 /* setup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = setup.html; path = ../setup.html; sourceTree = "<group>"; };
 		7BC375CA1934F83800087777 /* trust-anchors.conf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "trust-anchors.conf"; path = "../trust-anchors.conf"; sourceTree = "<group>"; };
 		7BC375CC1934F87D00087777 /* dnsmasq.conf.exmaple.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = dnsmasq.conf.exmaple.plist; sourceTree = "<group>"; };
+		7BCC614B1A7DA48100EF62F7 /* dnsmasq.test.conf */ = {isa = PBXFileReference; lastKnownFileType = text; name = dnsmasq.test.conf; path = ../dnsmasq.test.conf; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sh; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7B6FEED31934E51A00F3DBE7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7BC375B01934EF7B00087777 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7BC375C31934F3A100087777 /* dnsmasq.dylib in Frameworks */,
-				7BC375B61934EF7B00087777 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,28 +128,21 @@
 		7B6FEEC71934E4A300F3DBE7 = {
 			isa = PBXGroup;
 			children = (
+				7B6FEF441934E6EC00F3DBE7 /* include */,
+				7BC375B81934EF7B00087777 /* dnsmasqapp.m */,
+				7BC375D11934FE5F00087777 /* Resources */,
 				7B013DB319D8208B0015DEBB /* com.mrgray.dnsmasq_dev_killer.plist */,
 				7B013DB419D8208B0015DEBB /* com.mrgray.dnsmasq.plist */,
 				7B013DB219D81A310015DEBB /* dnsmasq.conf.provided */,
-				7BC375D11934FE5F00087777 /* Resources */,
-				7BC375B81934EF7B00087777 /* dnsmasqapp.m */,
+				7BCC614B1A7DA48100EF62F7 /* dnsmasq.test.conf */,
 				7B6FEEDF1934E51A00F3DBE7 /* libdnsmasq */,
+				7B82818D1A7D9F0A0012DA98 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		7B6FEED71934E51A00F3DBE7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7B6FEED61934E51A00F3DBE7 /* dnsmasq.dylib */,
-				7BC375B31934EF7B00087777 /* dnsmasq */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		7B6FEEDF1934E51A00F3DBE7 /* libdnsmasq */ = {
 			isa = PBXGroup;
 			children = (
-				7B6FEF441934E6EC00F3DBE7 /* include */,
 				7B6FEF4D1934E6EC00F3DBE7 /* auth.m */,
 				7B6FEF4E1934E6EC00F3DBE7 /* blockdata.m */,
 				7B6FEF4F1934E6EC00F3DBE7 /* bpf.m */,
@@ -215,14 +188,22 @@
 				7B6FEF4A1934E6EC00F3DBE7 /* ip6addr.h */,
 				7B6FEF4B1934E6EC00F3DBE7 /* radv-protocol.h */,
 			);
-			path = include;
+			name = include;
+			path = libdnsmasq/include;
+			sourceTree = "<group>";
+		};
+		7B82818D1A7D9F0A0012DA98 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7B6FEED61934E51A00F3DBE7 /* dnsmasq.dylib */,
+				7BC375B31934EF7B00087777 /* dnsmasq */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		7BC375D11934FE5F00087777 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7B6FEED71934E51A00F3DBE7 /* Products */,
-				7BC375B51934EF7B00087777 /* Foundation.framework */,
 				7BC375C41934F83700087777 /* dnsmasq.8 */,
 				7BC375C51934F83700087777 /* CHANGELOG */,
 				7BC375C61934F83700087777 /* dnsmasq.conf.example */,
@@ -292,7 +273,6 @@
 			buildPhases = (
 				7B6FEED21934E51A00F3DBE7 /* Sources */,
 				7B6FEED41934E51A00F3DBE7 /* Headers */,
-				7B6FEED31934E51A00F3DBE7 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -309,7 +289,6 @@
 			buildPhases = (
 				7BC375AF1934EF7B00087777 /* Sources */,
 				7BC375B01934EF7B00087777 /* Frameworks */,
-				7BC375B11934EF7B00087777 /* CopyFiles */,
 				7B6057881A5DF16600EACFEF /* ShellScript */,
 			);
 			buildRules = (
@@ -339,7 +318,7 @@
 				en,
 			);
 			mainGroup = 7B6FEEC71934E4A300F3DBE7;
-			productRefGroup = 7B6FEED71934E51A00F3DBE7 /* Products */;
+			productRefGroup = 7B6FEEC71934E4A300F3DBE7;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -363,7 +342,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mkdir -p /usr/local/etc\ncp -f \"${SRCROOT}/../dnsmasq.conf.provided\" /usr/local/etc/dnsmasq.conf";
+			shellScript = "CONFDIR=/usr/local/etc\nCONF=dnsmasq.test.conf\nmkdir -p $CONFDIR\ncp -f \"${SRCROOT}/../$CONF\" $CONFDIR/$CONF\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -372,6 +351,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B6057891A5DFC3D00EACFEF /* dnsmasqKit.m in Sources */,
 				7B6FEF821934E6EC00F3DBE7 /* network.m in Sources */,
 				7B6FEF781934E6EC00F3DBE7 /* dhcp6.m in Sources */,
 				7B6FEF7A1934E6EC00F3DBE7 /* dnssec.m in Sources */,
@@ -425,6 +405,7 @@
 		7B6FEECD1934E4A300F3DBE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -456,6 +437,7 @@
 		7B6FEECE1934E4A300F3DBE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -548,8 +530,6 @@
 		7BC375BF1934EF7B00087777 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEPLOYMENT_LOCATION = YES;
-				DEPLOYMENT_POSTPROCESSING = YES;
 				DSTROOT = /;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				HEADER_SEARCH_PATHS = (
@@ -557,6 +537,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include,
 				);
+				INFOPLIST_EXPAND_BUILD_SETTINGS = NO;
 				INSTALL_PATH = /xbin;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -566,8 +547,6 @@
 		7BC375C01934EF7B00087777 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				DEPLOYMENT_LOCATION = YES;
-				DEPLOYMENT_POSTPROCESSING = YES;
 				DSTROOT = /;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				HEADER_SEARCH_PATHS = (
@@ -575,6 +554,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include,
 				);
+				INFOPLIST_EXPAND_BUILD_SETTINGS = NO;
 				INSTALL_PATH = /xbin;
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -22,6 +22,9 @@ int main (int argc, char **argv) {
 
   @autoreleasepool {
 
+
+    NSLog(@"args: %@", NSProcessInfo.processInfo.arguments);
+    
 //    [dnsmasqKit monitorFile:@"/usr/local/etc/dnsmasq.conf" then:^(NSString *path) {
 //
 //      NSBeep();

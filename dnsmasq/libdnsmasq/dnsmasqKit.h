@@ -6,8 +6,4 @@
 //  Copyright (c) 2014 Alex Gray. All rights reserved.
 //
 
-#import <AtoZSingleton.h>
-
-@interface dnsmasqKit : AtoZSingleton
-
-@end
+//#import <AtoZSingleton.h>
