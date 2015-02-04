@@ -29,16 +29,17 @@
 #define MAX_MESSAGE 1024
 
 /* defaults in case we die() before we log_start() */
-static int log_fac = LOG_DAEMON;
-static int log_stderr = 0;
-static int echo_stderr = 0;
-static int log_fd = -1;
-static int log_to_file = 0;
-static int entries_alloced = 0;
-static int entries_lost = 0;
-static int connection_good = 1;
-static int max_logs = 0;
-static int connection_type = SOCK_DGRAM;
+
+static int log_fac = LOG_DAEMON,
+        log_stderr = 0,
+       echo_stderr = 0,
+            log_fd = -1,
+       log_to_file = 0,
+   entries_alloced = 0,
+      entries_lost = 0,
+   connection_good = 1,
+          max_logs = 0,
+   connection_type = SOCK_DGRAM;
 
 struct log_entry {
   int offset, length;

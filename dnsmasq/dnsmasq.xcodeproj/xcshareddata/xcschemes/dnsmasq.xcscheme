@@ -67,6 +67,10 @@
          </CommandLineArgument>
          <CommandLineArgument
             argument = "--conf-file=/usr/local/etc/dnsmasq.test.conf"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "--conf-file=/Volumes/2T/ServiceData/git/dnsmasq/wpad.test.conf"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

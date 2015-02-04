@@ -62,6 +62,7 @@
 		7B013DB219D81A310015DEBB /* dnsmasq.conf.provided */ = {isa = PBXFileReference; lastKnownFileType = text; name = dnsmasq.conf.provided; path = ../dnsmasq.conf.provided; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sh; };
 		7B013DB319D8208B0015DEBB /* com.mrgray.dnsmasq_dev_killer.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = com.mrgray.dnsmasq_dev_killer.plist; path = dnsmasq/com.mrgray.dnsmasq_dev_killer.plist; sourceTree = "<group>"; };
 		7B013DB419D8208B0015DEBB /* com.mrgray.dnsmasq.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = com.mrgray.dnsmasq.plist; path = dnsmasq/com.mrgray.dnsmasq.plist; sourceTree = "<group>"; };
+		7B08CF1C1A81687F00677E39 /* wpad.test.conf */ = {isa = PBXFileReference; lastKnownFileType = text; name = wpad.test.conf; path = ../wpad.test.conf; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.csh; };
 		7B4055EB19352411008BB9ED /* dnsmasqKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dnsmasqKit.h; sourceTree = "<group>"; };
 		7B4055EC19352411008BB9ED /* dnsmasqKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dnsmasqKit.m; sourceTree = "<group>"; };
 		7B6FEED61934E51A00F3DBE7 /* dnsmasq.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = dnsmasq.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +135,7 @@
 				7B013DB319D8208B0015DEBB /* com.mrgray.dnsmasq_dev_killer.plist */,
 				7B013DB419D8208B0015DEBB /* com.mrgray.dnsmasq.plist */,
 				7B013DB219D81A310015DEBB /* dnsmasq.conf.provided */,
+				7B08CF1C1A81687F00677E39 /* wpad.test.conf */,
 				7BCC614B1A7DA48100EF62F7 /* dnsmasq.test.conf */,
 				7B6FEEDF1934E51A00F3DBE7 /* libdnsmasq */,
 				7B82818D1A7D9F0A0012DA98 /* Products */,
@@ -494,11 +496,14 @@
 				DSTROOT = /;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = "$(AZBUILD)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					__APPLE_USE_RFC_3542,
 				);
 				HEADER_SEARCH_PATHS = (
+					"$(AZBUILD)/include",
+					/usr/local/include,
 					"\"$(SRCROOT)/**\"",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
@@ -515,11 +520,14 @@
 				DSTROOT = /;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_SEARCH_PATHS = "$(AZBUILD)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					__APPLE_USE_RFC_3542,
 				);
 				HEADER_SEARCH_PATHS = (
+					"$(AZBUILD)/include",
+					/usr/local/include,
 					"\"$(SRCROOT)/**\"",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
@@ -531,8 +539,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /;
+				FRAMEWORK_SEARCH_PATHS = "$(AZBUILD)";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				HEADER_SEARCH_PATHS = (
+					"$(AZBUILD)/include",
+					/usr/local/include,
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include,
@@ -548,8 +559,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DSTROOT = /;
+				FRAMEWORK_SEARCH_PATHS = "$(AZBUILD)";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				HEADER_SEARCH_PATHS = (
+					"$(AZBUILD)/include",
+					/usr/local/include,
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/local/include,

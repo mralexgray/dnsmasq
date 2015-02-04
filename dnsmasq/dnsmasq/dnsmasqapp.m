@@ -24,7 +24,7 @@ int main (int argc, char **argv) {
 
 
     NSLog(@"args: %@", NSProcessInfo.processInfo.arguments);
-    
+    [MasqKit shared];
 //    [dnsmasqKit monitorFile:@"/usr/local/etc/dnsmasq.conf" then:^(NSString *path) {
 //
 //      NSBeep();
@@ -544,7 +544,7 @@ int main (int argc, char **argv) {
       }
     }
 #endif
-    daemon->port ?      my_syslog(LOG_INFO, _("started, version %s DNS disabled"), VERSION) :
+    daemon->port ?      my_syslog(LOG_INFO, _("started, version %s on port %i"), VERSION, daemon->port) :
     daemon->cachesize ? my_syslog(LOG_INFO, _("started, version %s cachesize %d"), VERSION, daemon->cachesize) :
                         my_syslog(LOG_INFO, _("started, version %s cache disabled"), VERSION);
 

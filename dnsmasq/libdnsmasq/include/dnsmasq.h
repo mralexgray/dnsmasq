@@ -23,9 +23,13 @@
 
 @import Foundation;
 
-@interface dnsmasqKit : NSObject // AtoZSingleton
+@interface MasqKit : NSObject // AtoZSingleton
+
++ (instancetype) shared;
 
 + (void) monitorFile:(NSString*)path then:(void(^)(NSString*))dothis;
+
+@property (readonly) NSDictionary *info;
 
 @end
 

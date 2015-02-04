@@ -1,26 +1,36 @@
 
-//#import <sys/socket.h>
-//#import <netinet/in.h>
-//#ifndef NO_LARGEFILE
-///* Ensure we can use files >2GB (log files may grow this big) */
-//#  define _LARGEFILE_SOURCE 1
-//#  define _FILE_OFFSET_BITS 64
-//#endif
+#define   VERSION "1.0.AZ"
+#define COPYRIGHT "Copyright (c) 2000-2014 Simon Kelley"
 
+@import Darwin;
+
+//@import Foundation;
+
+/*
+#import <sys/socket.h>
+#import <netinet/in.h>
+#ifndef NO_LARGEFILE
+// Ensure we can use files >2GB (log files may grow this big)
+#  define _LARGEFILE_SOURCE 1
+#  define _FILE_OFFSET_BITS 64
+#endif
+*/
 /* Get linux C library versions and define _GNU_SOURCE for kFreeBSD. */
-//#if defined(__linux__) || defined(__GLIBC__)
-//#  ifndef __ANDROID__
-//#      define _GNU_SOURCE
-//#  endif
-//#  import <features.h> 
-//#endif
-
+/*
+#if defined(__linux__) || defined(__GLIBC__)
+#  ifndef __ANDROID__
+#      define _GNU_SOURCE
+#  endif
+#  import <features.h> 
+#endif
+*/
 /* Need these defined early */
-//#if defined(__sun) || defined(__sun__)
-//#  define _XPG4_2
-//#  define __EXTENSIONS__
-//#endif
-
+/*
+#if defined(__sun) || defined(__sun__)
+#  define _XPG4_2
+#  define __EXTENSIONS__
+#endif
+*/
 
 /* dnsmasq is Copyright (c) 2000-2014 Simon Kelley
 
@@ -37,15 +47,8 @@
    You should have received a copy of the GNU General Public License
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-
-
-#define   VERSION "1.0.AZ"
-#define COPYRIGHT "Copyright (c) 2000-2014 Simon Kelley"
-
-@import Darwin;
-
-/* get these before config.h  for IPv6 stuff... */
-//#import <sys/types.h> 
+/// get these before config.h  for IPv6 stuff...
+//#import <sys/types.h>
 //#import <sys/socket.h>
 
 /* #ifdef __APPLE__ */
@@ -75,7 +78,7 @@
 #define    RANDOM_SOCKS 64    // max simultaneous random ports
 #define     LEASE_RETRY 60    // on error, retry writing leasefile after LEASE_RETRY seconds
 #define        CACHESIZ 150   // default cache size
-#define       MAXLEASES 1000  // maximum number of DHCP leases
+#define       MAXLEASES 100   // maximum number of DHCP leases, was 1000
 #define       PING_WAIT 3     // wait for ping address-in-use test
 #define PING_CACHE_TIME 30    // Ping test assumed to be valid this long.
 #define DECLINE_BACKOFF 600   // disable DECLINEd static addresses for this long
@@ -210,8 +213,6 @@ RESOLVFILE
 /* #define HAVE_DNSSEC */
 
 
-
-
 /* Default locations for important system files. */
 
 #ifndef LEASEFILE
@@ -221,6 +222,8 @@ RESOLVFILE
 #      define LEASEFILE "/var/cache/dnsmasq.leases"
 #   elif defined(__ANDROID__)
 #      define LEASEFILE "/data/misc/dhcp/dnsmasq.leases"
+#   elif defined(TARGET_OS_MAC)
+#      define LEASEFILE "/var/run/dnsmasq.leases"
 #   else
 #      define LEASEFILE "/var/lib/misc/dnsmasq.leases"
 #   endif
@@ -329,7 +332,7 @@ HAVE_SOCKADDR_SA_LEN
 //#define HAVE_GETOPT_LONG
 //#undef HAVE_SOCKADDR_SA_LEN
 #define ETHER_ADDR_LEN 6 
-// 
+ 
 //#endif
 
 /* Decide if we're going to support IPv6 */

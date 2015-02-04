@@ -19,7 +19,6 @@
 //#if defined(HAVE_BSD_NETWORK) || defined(HAVE_SOLARIS_NETWORK)
 #include <ifaddrs.h>
 
-
 #if defined(HAVE_BSD_NETWORK) && !defined(__APPLE__)
 #include <sys/param.h>
 #include <sys/sysctl.h>
