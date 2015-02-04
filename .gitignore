@@ -12,3 +12,4 @@ debian/files
 debian/substvars
 debian/utils-substvars
 debian/utils/
+dnsmasq-2.72.zip
