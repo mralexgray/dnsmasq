@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B013DB119D817BC0015DEBB /* netlink.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF5E1934E6EC00F3DBE7 /* netlink.m */; };
-		7B4055ED19352411008BB9ED /* dnsmasqKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B4055EB19352411008BB9ED /* dnsmasqKit.h */; };
-		7B6057891A5DFC3D00EACFEF /* dnsmasqKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4055EC19352411008BB9ED /* dnsmasqKit.m */; };
+		7B013DB119D817BC0015DEBB /* netlink.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF5E1934E6EC00F3DBE7 /* netlink.c */; };
+		7B47B0E41A82E32D00AC581D /* dnsmasq.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B47B0E31A82E32D00AC581D /* dnsmasq.c */; };
+		7B47B0E61A82E62A00AC581D /* dnsmasqapp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC375B81934EF7B00087777 /* dnsmasqapp.m */; };
 		7B6FEF691934E6EC00F3DBE7 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B6FEF451934E6EC00F3DBE7 /* config.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B6FEF6A1934E6EC00F3DBE7 /* dhcp-protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B6FEF461934E6EC00F3DBE7 /* dhcp-protocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B6FEF6B1934E6EC00F3DBE7 /* dhcp6-protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B6FEF471934E6EC00F3DBE7 /* dhcp6-protocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -17,34 +17,32 @@
 		7B6FEF6D1934E6EC00F3DBE7 /* dnsmasq.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B6FEF491934E6EC00F3DBE7 /* dnsmasq.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B6FEF6E1934E6EC00F3DBE7 /* ip6addr.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B6FEF4A1934E6EC00F3DBE7 /* ip6addr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B6FEF6F1934E6EC00F3DBE7 /* radv-protocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 7B6FEF4B1934E6EC00F3DBE7 /* radv-protocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7B6FEF701934E6EC00F3DBE7 /* auth.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF4D1934E6EC00F3DBE7 /* auth.m */; };
-		7B6FEF711934E6EC00F3DBE7 /* blockdata.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF4E1934E6EC00F3DBE7 /* blockdata.m */; };
-		7B6FEF721934E6EC00F3DBE7 /* bpf.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF4F1934E6EC00F3DBE7 /* bpf.m */; };
-		7B6FEF731934E6EC00F3DBE7 /* cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF501934E6EC00F3DBE7 /* cache.m */; };
-		7B6FEF741934E6EC00F3DBE7 /* conntrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF511934E6EC00F3DBE7 /* conntrack.m */; };
-		7B6FEF751934E6EC00F3DBE7 /* dbus.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF521934E6EC00F3DBE7 /* dbus.m */; };
-		7B6FEF761934E6EC00F3DBE7 /* dhcp-common.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF531934E6EC00F3DBE7 /* dhcp-common.m */; };
-		7B6FEF771934E6EC00F3DBE7 /* dhcp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF541934E6EC00F3DBE7 /* dhcp.m */; };
-		7B6FEF781934E6EC00F3DBE7 /* dhcp6.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF551934E6EC00F3DBE7 /* dhcp6.m */; };
-		7B6FEF7A1934E6EC00F3DBE7 /* dnssec.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF571934E6EC00F3DBE7 /* dnssec.m */; };
-		7B6FEF7B1934E6EC00F3DBE7 /* domain.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF581934E6EC00F3DBE7 /* domain.m */; };
-		7B6FEF7C1934E6EC00F3DBE7 /* forward.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF591934E6EC00F3DBE7 /* forward.m */; };
-		7B6FEF7D1934E6EC00F3DBE7 /* helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF5A1934E6EC00F3DBE7 /* helper.m */; };
-		7B6FEF7E1934E6EC00F3DBE7 /* ipset.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF5B1934E6EC00F3DBE7 /* ipset.m */; };
-		7B6FEF7F1934E6EC00F3DBE7 /* lease.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF5C1934E6EC00F3DBE7 /* lease.m */; };
-		7B6FEF801934E6EC00F3DBE7 /* log.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF5D1934E6EC00F3DBE7 /* log.m */; };
-		7B6FEF821934E6EC00F3DBE7 /* network.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF5F1934E6EC00F3DBE7 /* network.m */; };
-		7B6FEF831934E6EC00F3DBE7 /* option.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF601934E6EC00F3DBE7 /* option.m */; };
-		7B6FEF841934E6EC00F3DBE7 /* outpacket.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF611934E6EC00F3DBE7 /* outpacket.m */; };
-		7B6FEF851934E6EC00F3DBE7 /* radv.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF621934E6EC00F3DBE7 /* radv.m */; };
-		7B6FEF861934E6EC00F3DBE7 /* rfc1035.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF631934E6EC00F3DBE7 /* rfc1035.m */; };
-		7B6FEF871934E6EC00F3DBE7 /* rfc2131.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF641934E6EC00F3DBE7 /* rfc2131.m */; };
-		7B6FEF881934E6EC00F3DBE7 /* rfc3315.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF651934E6EC00F3DBE7 /* rfc3315.m */; };
-		7B6FEF891934E6EC00F3DBE7 /* slaac.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF661934E6EC00F3DBE7 /* slaac.m */; };
-		7B6FEF8A1934E6EC00F3DBE7 /* tftp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF671934E6EC00F3DBE7 /* tftp.m */; };
-		7B6FEF8B1934E6EC00F3DBE7 /* util.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF681934E6EC00F3DBE7 /* util.m */; };
-		7BC375AE1934EEE100087777 /* dnsmasqlib.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC375AD1934EEE100087777 /* dnsmasqlib.m */; };
-		7BC375B91934EF7B00087777 /* dnsmasqapp.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC375B81934EF7B00087777 /* dnsmasqapp.m */; };
+		7B6FEF701934E6EC00F3DBE7 /* auth.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF4D1934E6EC00F3DBE7 /* auth.c */; };
+		7B6FEF711934E6EC00F3DBE7 /* blockdata.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF4E1934E6EC00F3DBE7 /* blockdata.c */; };
+		7B6FEF721934E6EC00F3DBE7 /* bpf.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF4F1934E6EC00F3DBE7 /* bpf.c */; };
+		7B6FEF731934E6EC00F3DBE7 /* cache.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF501934E6EC00F3DBE7 /* cache.c */; };
+		7B6FEF741934E6EC00F3DBE7 /* conntrack.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF511934E6EC00F3DBE7 /* conntrack.c */; };
+		7B6FEF751934E6EC00F3DBE7 /* dbus.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF521934E6EC00F3DBE7 /* dbus.c */; };
+		7B6FEF761934E6EC00F3DBE7 /* dhcp-common.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF531934E6EC00F3DBE7 /* dhcp-common.c */; };
+		7B6FEF771934E6EC00F3DBE7 /* dhcp.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF541934E6EC00F3DBE7 /* dhcp.c */; };
+		7B6FEF781934E6EC00F3DBE7 /* dhcp6.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF551934E6EC00F3DBE7 /* dhcp6.c */; };
+		7B6FEF7A1934E6EC00F3DBE7 /* dnssec.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF571934E6EC00F3DBE7 /* dnssec.c */; };
+		7B6FEF7B1934E6EC00F3DBE7 /* domain.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF581934E6EC00F3DBE7 /* domain.c */; };
+		7B6FEF7C1934E6EC00F3DBE7 /* forward.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF591934E6EC00F3DBE7 /* forward.c */; };
+		7B6FEF7D1934E6EC00F3DBE7 /* helper.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF5A1934E6EC00F3DBE7 /* helper.c */; };
+		7B6FEF7E1934E6EC00F3DBE7 /* ipset.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF5B1934E6EC00F3DBE7 /* ipset.c */; };
+		7B6FEF7F1934E6EC00F3DBE7 /* lease.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF5C1934E6EC00F3DBE7 /* lease.c */; };
+		7B6FEF801934E6EC00F3DBE7 /* log.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF5D1934E6EC00F3DBE7 /* log.c */; };
+		7B6FEF821934E6EC00F3DBE7 /* network.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF5F1934E6EC00F3DBE7 /* network.c */; };
+		7B6FEF831934E6EC00F3DBE7 /* option.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF601934E6EC00F3DBE7 /* option.c */; };
+		7B6FEF841934E6EC00F3DBE7 /* outpacket.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF611934E6EC00F3DBE7 /* outpacket.c */; };
+		7B6FEF851934E6EC00F3DBE7 /* radv.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF621934E6EC00F3DBE7 /* radv.c */; };
+		7B6FEF861934E6EC00F3DBE7 /* rfc1035.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF631934E6EC00F3DBE7 /* rfc1035.c */; };
+		7B6FEF871934E6EC00F3DBE7 /* rfc2131.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF641934E6EC00F3DBE7 /* rfc2131.c */; };
+		7B6FEF881934E6EC00F3DBE7 /* rfc3315.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF651934E6EC00F3DBE7 /* rfc3315.c */; };
+		7B6FEF891934E6EC00F3DBE7 /* slaac.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF661934E6EC00F3DBE7 /* slaac.c */; };
+		7B6FEF8A1934E6EC00F3DBE7 /* tftp.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF671934E6EC00F3DBE7 /* tftp.c */; };
+		7B6FEF8B1934E6EC00F3DBE7 /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = 7B6FEF681934E6EC00F3DBE7 /* util.c */; };
 		7BC375C31934F3A100087777 /* dnsmasq.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B6FEED61934E51A00F3DBE7 /* dnsmasq.dylib */; };
 /* End PBXBuildFile section */
 
@@ -59,12 +57,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7B013DB219D81A310015DEBB /* dnsmasq.conf.provided */ = {isa = PBXFileReference; lastKnownFileType = text; name = dnsmasq.conf.provided; path = ../dnsmasq.conf.provided; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sh; };
-		7B013DB319D8208B0015DEBB /* com.mrgray.dnsmasq_dev_killer.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = com.mrgray.dnsmasq_dev_killer.plist; path = dnsmasq/com.mrgray.dnsmasq_dev_killer.plist; sourceTree = "<group>"; };
-		7B013DB419D8208B0015DEBB /* com.mrgray.dnsmasq.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = com.mrgray.dnsmasq.plist; path = dnsmasq/com.mrgray.dnsmasq.plist; sourceTree = "<group>"; };
-		7B08CF1C1A81687F00677E39 /* wpad.test.conf */ = {isa = PBXFileReference; lastKnownFileType = text; name = wpad.test.conf; path = ../wpad.test.conf; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.csh; };
+		7B013DB219D81A310015DEBB /* dnsmasq.conf.provided */ = {isa = PBXFileReference; lastKnownFileType = text; path = dnsmasq.conf.provided; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.opencl; };
+		7B013DB319D8208B0015DEBB /* com.mrgray.dnsmasq_dev_killer.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = com.mrgray.dnsmasq_dev_killer.plist; sourceTree = "<group>"; };
+		7B013DB419D8208B0015DEBB /* com.mrgray.dnsmasq.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = com.mrgray.dnsmasq.plist; sourceTree = "<group>"; };
+		7B08CF1C1A81687F00677E39 /* wpad.test.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = wpad.test.conf; sourceTree = "<group>"; };
 		7B4055EB19352411008BB9ED /* dnsmasqKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dnsmasqKit.h; sourceTree = "<group>"; };
 		7B4055EC19352411008BB9ED /* dnsmasqKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dnsmasqKit.m; sourceTree = "<group>"; };
+		7B47B0E31A82E32D00AC581D /* dnsmasq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dnsmasq.c; sourceTree = "<group>"; };
+		7B47B0E51A82E5F900AC581D /* dnsmasqapp.old.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dnsmasqapp.old.m; sourceTree = "<group>"; };
+		7B6FC9851A82D48800C79157 /* dnsmasq */ = {isa = PBXFileReference; lastKnownFileType = folder; name = dnsmasq; path = ../..; sourceTree = "<group>"; };
 		7B6FEED61934E51A00F3DBE7 /* dnsmasq.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = dnsmasq.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B6FEF451934E6EC00F3DBE7 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		7B6FEF461934E6EC00F3DBE7 /* dhcp-protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "dhcp-protocol.h"; sourceTree = "<group>"; };
@@ -73,45 +74,44 @@
 		7B6FEF491934E6EC00F3DBE7 /* dnsmasq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dnsmasq.h; sourceTree = "<group>"; };
 		7B6FEF4A1934E6EC00F3DBE7 /* ip6addr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ip6addr.h; sourceTree = "<group>"; };
 		7B6FEF4B1934E6EC00F3DBE7 /* radv-protocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "radv-protocol.h"; sourceTree = "<group>"; };
-		7B6FEF4D1934E6EC00F3DBE7 /* auth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = auth.m; sourceTree = "<group>"; };
-		7B6FEF4E1934E6EC00F3DBE7 /* blockdata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = blockdata.m; sourceTree = "<group>"; };
-		7B6FEF4F1934E6EC00F3DBE7 /* bpf.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = bpf.m; sourceTree = "<group>"; };
-		7B6FEF501934E6EC00F3DBE7 /* cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cache.m; sourceTree = "<group>"; };
-		7B6FEF511934E6EC00F3DBE7 /* conntrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = conntrack.m; sourceTree = "<group>"; };
-		7B6FEF521934E6EC00F3DBE7 /* dbus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dbus.m; sourceTree = "<group>"; };
-		7B6FEF531934E6EC00F3DBE7 /* dhcp-common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "dhcp-common.m"; sourceTree = "<group>"; };
-		7B6FEF541934E6EC00F3DBE7 /* dhcp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dhcp.m; sourceTree = "<group>"; };
-		7B6FEF551934E6EC00F3DBE7 /* dhcp6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dhcp6.m; sourceTree = "<group>"; };
-		7B6FEF571934E6EC00F3DBE7 /* dnssec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dnssec.m; sourceTree = "<group>"; };
-		7B6FEF581934E6EC00F3DBE7 /* domain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = domain.m; sourceTree = "<group>"; };
-		7B6FEF591934E6EC00F3DBE7 /* forward.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = forward.m; sourceTree = "<group>"; };
-		7B6FEF5A1934E6EC00F3DBE7 /* helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = helper.m; sourceTree = "<group>"; };
-		7B6FEF5B1934E6EC00F3DBE7 /* ipset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ipset.m; sourceTree = "<group>"; };
-		7B6FEF5C1934E6EC00F3DBE7 /* lease.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = lease.m; sourceTree = "<group>"; };
-		7B6FEF5D1934E6EC00F3DBE7 /* log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = log.m; sourceTree = "<group>"; };
-		7B6FEF5E1934E6EC00F3DBE7 /* netlink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = netlink.m; sourceTree = "<group>"; };
-		7B6FEF5F1934E6EC00F3DBE7 /* network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = network.m; sourceTree = "<group>"; };
-		7B6FEF601934E6EC00F3DBE7 /* option.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = option.m; sourceTree = "<group>"; };
-		7B6FEF611934E6EC00F3DBE7 /* outpacket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = outpacket.m; sourceTree = "<group>"; };
-		7B6FEF621934E6EC00F3DBE7 /* radv.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = radv.m; sourceTree = "<group>"; };
-		7B6FEF631934E6EC00F3DBE7 /* rfc1035.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rfc1035.m; sourceTree = "<group>"; };
-		7B6FEF641934E6EC00F3DBE7 /* rfc2131.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rfc2131.m; sourceTree = "<group>"; };
-		7B6FEF651934E6EC00F3DBE7 /* rfc3315.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rfc3315.m; sourceTree = "<group>"; };
-		7B6FEF661934E6EC00F3DBE7 /* slaac.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = slaac.m; sourceTree = "<group>"; };
-		7B6FEF671934E6EC00F3DBE7 /* tftp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tftp.m; sourceTree = "<group>"; };
-		7B6FEF681934E6EC00F3DBE7 /* util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = util.m; sourceTree = "<group>"; };
-		7BC375AD1934EEE100087777 /* dnsmasqlib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dnsmasqlib.m; sourceTree = "<group>"; };
+		7B6FEF4D1934E6EC00F3DBE7 /* auth.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = auth.c; sourceTree = "<group>"; };
+		7B6FEF4E1934E6EC00F3DBE7 /* blockdata.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = blockdata.c; sourceTree = "<group>"; };
+		7B6FEF4F1934E6EC00F3DBE7 /* bpf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bpf.c; sourceTree = "<group>"; };
+		7B6FEF501934E6EC00F3DBE7 /* cache.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cache.c; sourceTree = "<group>"; };
+		7B6FEF511934E6EC00F3DBE7 /* conntrack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = conntrack.c; sourceTree = "<group>"; };
+		7B6FEF521934E6EC00F3DBE7 /* dbus.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dbus.c; sourceTree = "<group>"; };
+		7B6FEF531934E6EC00F3DBE7 /* dhcp-common.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "dhcp-common.c"; sourceTree = "<group>"; };
+		7B6FEF541934E6EC00F3DBE7 /* dhcp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dhcp.c; sourceTree = "<group>"; };
+		7B6FEF551934E6EC00F3DBE7 /* dhcp6.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dhcp6.c; sourceTree = "<group>"; };
+		7B6FEF571934E6EC00F3DBE7 /* dnssec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = dnssec.c; sourceTree = "<group>"; };
+		7B6FEF581934E6EC00F3DBE7 /* domain.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = domain.c; sourceTree = "<group>"; };
+		7B6FEF591934E6EC00F3DBE7 /* forward.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = forward.c; sourceTree = "<group>"; };
+		7B6FEF5A1934E6EC00F3DBE7 /* helper.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = helper.c; sourceTree = "<group>"; };
+		7B6FEF5B1934E6EC00F3DBE7 /* ipset.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ipset.c; sourceTree = "<group>"; };
+		7B6FEF5C1934E6EC00F3DBE7 /* lease.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lease.c; sourceTree = "<group>"; };
+		7B6FEF5D1934E6EC00F3DBE7 /* log.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = log.c; sourceTree = "<group>"; };
+		7B6FEF5E1934E6EC00F3DBE7 /* netlink.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = netlink.c; sourceTree = "<group>"; };
+		7B6FEF5F1934E6EC00F3DBE7 /* network.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = network.c; sourceTree = "<group>"; };
+		7B6FEF601934E6EC00F3DBE7 /* option.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = option.c; sourceTree = "<group>"; };
+		7B6FEF611934E6EC00F3DBE7 /* outpacket.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = outpacket.c; sourceTree = "<group>"; };
+		7B6FEF621934E6EC00F3DBE7 /* radv.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = radv.c; sourceTree = "<group>"; };
+		7B6FEF631934E6EC00F3DBE7 /* rfc1035.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rfc1035.c; sourceTree = "<group>"; };
+		7B6FEF641934E6EC00F3DBE7 /* rfc2131.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rfc2131.c; sourceTree = "<group>"; };
+		7B6FEF651934E6EC00F3DBE7 /* rfc3315.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rfc3315.c; sourceTree = "<group>"; };
+		7B6FEF661934E6EC00F3DBE7 /* slaac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = slaac.c; sourceTree = "<group>"; };
+		7B6FEF671934E6EC00F3DBE7 /* tftp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tftp.c; sourceTree = "<group>"; };
+		7B6FEF681934E6EC00F3DBE7 /* util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = util.c; sourceTree = "<group>"; };
 		7BC375B31934EF7B00087777 /* dnsmasq */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = dnsmasq; sourceTree = BUILT_PRODUCTS_DIR; };
-		7BC375B81934EF7B00087777 /* dnsmasqapp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = dnsmasqapp.m; path = dnsmasq/dnsmasqapp.m; sourceTree = "<group>"; };
-		7BC375C41934F83700087777 /* dnsmasq.8 */ = {isa = PBXFileReference; lastKnownFileType = text; name = dnsmasq.8; path = ../man/dnsmasq.8; sourceTree = "<group>"; };
-		7BC375C51934F83700087777 /* CHANGELOG */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHANGELOG; path = ../CHANGELOG; sourceTree = "<group>"; };
+		7BC375B81934EF7B00087777 /* dnsmasqapp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = dnsmasqapp.m; sourceTree = "<group>"; };
+		7BC375C41934F83700087777 /* dnsmasq.8 */ = {isa = PBXFileReference; lastKnownFileType = text; name = dnsmasq.8; path = ../../man/dnsmasq.8; sourceTree = "<group>"; };
+		7BC375C51934F83700087777 /* CHANGELOG */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHANGELOG; path = ../../CHANGELOG; sourceTree = "<group>"; };
 		7BC375C61934F83700087777 /* dnsmasq.conf.example */ = {isa = PBXFileReference; lastKnownFileType = text; name = dnsmasq.conf.example; path = /Volumes/2T/ServiceData/git/dnsmasq/dnsmasq.conf.example; sourceTree = "<absolute>"; };
-		7BC375C71934F83700087777 /* doc.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = doc.html; path = ../doc.html; sourceTree = "<group>"; };
-		7BC375C81934F83800087777 /* FAQ */ = {isa = PBXFileReference; lastKnownFileType = text; name = FAQ; path = ../FAQ; sourceTree = "<group>"; };
-		7BC375C91934F83800087777 /* setup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = setup.html; path = ../setup.html; sourceTree = "<group>"; };
-		7BC375CA1934F83800087777 /* trust-anchors.conf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "trust-anchors.conf"; path = "../trust-anchors.conf"; sourceTree = "<group>"; };
+		7BC375C71934F83700087777 /* doc.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = doc.html; path = ../../doc.html; sourceTree = "<group>"; };
+		7BC375C81934F83800087777 /* FAQ */ = {isa = PBXFileReference; lastKnownFileType = text; name = FAQ; path = ../../FAQ; sourceTree = "<group>"; };
+		7BC375C91934F83800087777 /* setup.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = setup.html; path = ../../setup.html; sourceTree = "<group>"; };
+		7BC375CA1934F83800087777 /* trust-anchors.conf */ = {isa = PBXFileReference; lastKnownFileType = text; name = "trust-anchors.conf"; path = "../../trust-anchors.conf"; sourceTree = "<group>"; };
 		7BC375CC1934F87D00087777 /* dnsmasq.conf.exmaple.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = dnsmasq.conf.exmaple.plist; sourceTree = "<group>"; };
-		7BCC614B1A7DA48100EF62F7 /* dnsmasq.test.conf */ = {isa = PBXFileReference; lastKnownFileType = text; name = dnsmasq.test.conf; path = ../dnsmasq.test.conf; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.sh; };
+		7BCC614B1A7DA48100EF62F7 /* dnsmasq.test.conf */ = {isa = PBXFileReference; lastKnownFileType = text; path = dnsmasq.test.conf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,14 +129,18 @@
 		7B6FEEC71934E4A300F3DBE7 = {
 			isa = PBXGroup;
 			children = (
+				7B6FC9851A82D48800C79157 /* dnsmasq */,
 				7B6FEF441934E6EC00F3DBE7 /* include */,
 				7BC375B81934EF7B00087777 /* dnsmasqapp.m */,
+				7B47B0E51A82E5F900AC581D /* dnsmasqapp.old.m */,
 				7BC375D11934FE5F00087777 /* Resources */,
 				7B013DB319D8208B0015DEBB /* com.mrgray.dnsmasq_dev_killer.plist */,
 				7B013DB419D8208B0015DEBB /* com.mrgray.dnsmasq.plist */,
 				7B013DB219D81A310015DEBB /* dnsmasq.conf.provided */,
 				7B08CF1C1A81687F00677E39 /* wpad.test.conf */,
 				7BCC614B1A7DA48100EF62F7 /* dnsmasq.test.conf */,
+				7B4055EB19352411008BB9ED /* dnsmasqKit.h */,
+				7B4055EC19352411008BB9ED /* dnsmasqKit.m */,
 				7B6FEEDF1934E51A00F3DBE7 /* libdnsmasq */,
 				7B82818D1A7D9F0A0012DA98 /* Products */,
 			);
@@ -145,38 +149,37 @@
 		7B6FEEDF1934E51A00F3DBE7 /* libdnsmasq */ = {
 			isa = PBXGroup;
 			children = (
-				7B6FEF4D1934E6EC00F3DBE7 /* auth.m */,
-				7B6FEF4E1934E6EC00F3DBE7 /* blockdata.m */,
-				7B6FEF4F1934E6EC00F3DBE7 /* bpf.m */,
-				7B6FEF501934E6EC00F3DBE7 /* cache.m */,
-				7B6FEF511934E6EC00F3DBE7 /* conntrack.m */,
-				7B6FEF521934E6EC00F3DBE7 /* dbus.m */,
-				7B6FEF531934E6EC00F3DBE7 /* dhcp-common.m */,
-				7B6FEF541934E6EC00F3DBE7 /* dhcp.m */,
-				7B6FEF551934E6EC00F3DBE7 /* dhcp6.m */,
-				7BC375AD1934EEE100087777 /* dnsmasqlib.m */,
-				7B6FEF571934E6EC00F3DBE7 /* dnssec.m */,
-				7B6FEF581934E6EC00F3DBE7 /* domain.m */,
-				7B6FEF591934E6EC00F3DBE7 /* forward.m */,
-				7B6FEF5A1934E6EC00F3DBE7 /* helper.m */,
-				7B6FEF5B1934E6EC00F3DBE7 /* ipset.m */,
-				7B6FEF5C1934E6EC00F3DBE7 /* lease.m */,
-				7B6FEF5D1934E6EC00F3DBE7 /* log.m */,
-				7B6FEF5E1934E6EC00F3DBE7 /* netlink.m */,
-				7B6FEF601934E6EC00F3DBE7 /* option.m */,
-				7B6FEF5F1934E6EC00F3DBE7 /* network.m */,
-				7B6FEF611934E6EC00F3DBE7 /* outpacket.m */,
-				7B6FEF621934E6EC00F3DBE7 /* radv.m */,
-				7B6FEF631934E6EC00F3DBE7 /* rfc1035.m */,
-				7B6FEF641934E6EC00F3DBE7 /* rfc2131.m */,
-				7B6FEF651934E6EC00F3DBE7 /* rfc3315.m */,
-				7B6FEF661934E6EC00F3DBE7 /* slaac.m */,
-				7B6FEF671934E6EC00F3DBE7 /* tftp.m */,
-				7B6FEF681934E6EC00F3DBE7 /* util.m */,
-				7B4055EB19352411008BB9ED /* dnsmasqKit.h */,
-				7B4055EC19352411008BB9ED /* dnsmasqKit.m */,
+				7B47B0E31A82E32D00AC581D /* dnsmasq.c */,
+				7B6FEF4D1934E6EC00F3DBE7 /* auth.c */,
+				7B6FEF4E1934E6EC00F3DBE7 /* blockdata.c */,
+				7B6FEF4F1934E6EC00F3DBE7 /* bpf.c */,
+				7B6FEF501934E6EC00F3DBE7 /* cache.c */,
+				7B6FEF511934E6EC00F3DBE7 /* conntrack.c */,
+				7B6FEF521934E6EC00F3DBE7 /* dbus.c */,
+				7B6FEF531934E6EC00F3DBE7 /* dhcp-common.c */,
+				7B6FEF541934E6EC00F3DBE7 /* dhcp.c */,
+				7B6FEF551934E6EC00F3DBE7 /* dhcp6.c */,
+				7B6FEF571934E6EC00F3DBE7 /* dnssec.c */,
+				7B6FEF581934E6EC00F3DBE7 /* domain.c */,
+				7B6FEF591934E6EC00F3DBE7 /* forward.c */,
+				7B6FEF5A1934E6EC00F3DBE7 /* helper.c */,
+				7B6FEF5B1934E6EC00F3DBE7 /* ipset.c */,
+				7B6FEF5C1934E6EC00F3DBE7 /* lease.c */,
+				7B6FEF5D1934E6EC00F3DBE7 /* log.c */,
+				7B6FEF5E1934E6EC00F3DBE7 /* netlink.c */,
+				7B6FEF601934E6EC00F3DBE7 /* option.c */,
+				7B6FEF5F1934E6EC00F3DBE7 /* network.c */,
+				7B6FEF611934E6EC00F3DBE7 /* outpacket.c */,
+				7B6FEF621934E6EC00F3DBE7 /* radv.c */,
+				7B6FEF631934E6EC00F3DBE7 /* rfc1035.c */,
+				7B6FEF641934E6EC00F3DBE7 /* rfc2131.c */,
+				7B6FEF651934E6EC00F3DBE7 /* rfc3315.c */,
+				7B6FEF661934E6EC00F3DBE7 /* slaac.c */,
+				7B6FEF671934E6EC00F3DBE7 /* tftp.c */,
+				7B6FEF681934E6EC00F3DBE7 /* util.c */,
 			);
-			path = libdnsmasq;
+			name = libdnsmasq;
+			path = ../../src;
 			sourceTree = "<group>";
 		};
 		7B6FEF441934E6EC00F3DBE7 /* include */ = {
@@ -191,7 +194,7 @@
 				7B6FEF4B1934E6EC00F3DBE7 /* radv-protocol.h */,
 			);
 			name = include;
-			path = libdnsmasq/include;
+			path = ../../src;
 			sourceTree = "<group>";
 		};
 		7B82818D1A7D9F0A0012DA98 /* Products */ = {
@@ -226,7 +229,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B6FEF6D1934E6EC00F3DBE7 /* dnsmasq.h in Headers */,
-				7B4055ED19352411008BB9ED /* dnsmasqKit.h in Headers */,
 				7B6FEF6C1934E6EC00F3DBE7 /* dns-protocol.h in Headers */,
 				7B6FEF691934E6EC00F3DBE7 /* config.h in Headers */,
 				7B6FEF6B1934E6EC00F3DBE7 /* dhcp6-protocol.h in Headers */,
@@ -241,12 +243,12 @@
 /* Begin PBXLegacyTarget section */
 		7B6FEECC1934E4A300F3DBE7 /* make dnsmasq */ = {
 			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
+			buildArgumentsString = "$(ACTION) CLAGS=\"-I/usr/local/include -I/usr/local/Cellar/libidn/1.29/include -I/usr/local/Cellar/nettle/2.7.1/include -I/usr/local/Cellar/gmp/6.0.0a/include  -D__APPLE_USE_RFC_3542 -L/usr/local/lib -lnettle -lhogweed  -lgmp -L/usr/local/Cellar/libidn/1.29/lib -lidn       -L/usr/local/Cellar/nettle/2.7.1/lib -lnettle -lhogweed  -lgmp\" LDFLAGS=\"-L/usr/local/Cellar/libidn/1.29/lib -lidn       -L/usr/local/Cellar/nettle/2.7.1/lib -lnettle -lhogweed  -lgmp\" COPTS=\"-DHAVE_DNSSEC -DHAVE_IDN\"";
 			buildConfigurationList = 7B6FEECF1934E4A300F3DBE7 /* Build configuration list for PBXLegacyTarget "make dnsmasq" */;
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = ../;
+			buildWorkingDirectory = ../../;
 			dependencies = (
 			);
 			name = "make dnsmasq";
@@ -344,7 +346,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "CONFDIR=/usr/local/etc\nCONF=dnsmasq.test.conf\nmkdir -p $CONFDIR\ncp -f \"${SRCROOT}/../$CONF\" $CONFDIR/$CONF\n";
+			shellScript = "#CONFDIR=/usr/local/etc\n##CONF=dnsmasq.test.conf\n#mkdir -p $CONFDIR\n#cp -f \"${SRCROOT}/../$CONF\" $CONFDIR/$CONF\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -353,35 +355,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B6057891A5DFC3D00EACFEF /* dnsmasqKit.m in Sources */,
-				7B6FEF821934E6EC00F3DBE7 /* network.m in Sources */,
-				7B6FEF781934E6EC00F3DBE7 /* dhcp6.m in Sources */,
-				7B6FEF7A1934E6EC00F3DBE7 /* dnssec.m in Sources */,
-				7B6FEF841934E6EC00F3DBE7 /* outpacket.m in Sources */,
-				7B6FEF871934E6EC00F3DBE7 /* rfc2131.m in Sources */,
-				7B6FEF7F1934E6EC00F3DBE7 /* lease.m in Sources */,
-				7B6FEF731934E6EC00F3DBE7 /* cache.m in Sources */,
-				7B6FEF7E1934E6EC00F3DBE7 /* ipset.m in Sources */,
-				7B6FEF831934E6EC00F3DBE7 /* option.m in Sources */,
-				7B6FEF8B1934E6EC00F3DBE7 /* util.m in Sources */,
-				7B6FEF851934E6EC00F3DBE7 /* radv.m in Sources */,
-				7BC375AE1934EEE100087777 /* dnsmasqlib.m in Sources */,
-				7B6FEF721934E6EC00F3DBE7 /* bpf.m in Sources */,
-				7B6FEF701934E6EC00F3DBE7 /* auth.m in Sources */,
-				7B6FEF741934E6EC00F3DBE7 /* conntrack.m in Sources */,
-				7B6FEF761934E6EC00F3DBE7 /* dhcp-common.m in Sources */,
-				7B6FEF8A1934E6EC00F3DBE7 /* tftp.m in Sources */,
-				7B013DB119D817BC0015DEBB /* netlink.m in Sources */,
-				7B6FEF891934E6EC00F3DBE7 /* slaac.m in Sources */,
-				7B6FEF711934E6EC00F3DBE7 /* blockdata.m in Sources */,
-				7B6FEF7B1934E6EC00F3DBE7 /* domain.m in Sources */,
-				7B6FEF771934E6EC00F3DBE7 /* dhcp.m in Sources */,
-				7B6FEF881934E6EC00F3DBE7 /* rfc3315.m in Sources */,
-				7B6FEF7C1934E6EC00F3DBE7 /* forward.m in Sources */,
-				7B6FEF861934E6EC00F3DBE7 /* rfc1035.m in Sources */,
-				7B6FEF801934E6EC00F3DBE7 /* log.m in Sources */,
-				7B6FEF751934E6EC00F3DBE7 /* dbus.m in Sources */,
-				7B6FEF7D1934E6EC00F3DBE7 /* helper.m in Sources */,
+				7B6FEF821934E6EC00F3DBE7 /* network.c in Sources */,
+				7B6FEF781934E6EC00F3DBE7 /* dhcp6.c in Sources */,
+				7B6FEF7A1934E6EC00F3DBE7 /* dnssec.c in Sources */,
+				7B6FEF841934E6EC00F3DBE7 /* outpacket.c in Sources */,
+				7B6FEF871934E6EC00F3DBE7 /* rfc2131.c in Sources */,
+				7B6FEF7F1934E6EC00F3DBE7 /* lease.c in Sources */,
+				7B6FEF731934E6EC00F3DBE7 /* cache.c in Sources */,
+				7B6FEF7E1934E6EC00F3DBE7 /* ipset.c in Sources */,
+				7B6FEF831934E6EC00F3DBE7 /* option.c in Sources */,
+				7B6FEF8B1934E6EC00F3DBE7 /* util.c in Sources */,
+				7B6FEF851934E6EC00F3DBE7 /* radv.c in Sources */,
+				7B6FEF721934E6EC00F3DBE7 /* bpf.c in Sources */,
+				7B6FEF701934E6EC00F3DBE7 /* auth.c in Sources */,
+				7B47B0E41A82E32D00AC581D /* dnsmasq.c in Sources */,
+				7B6FEF741934E6EC00F3DBE7 /* conntrack.c in Sources */,
+				7B6FEF761934E6EC00F3DBE7 /* dhcp-common.c in Sources */,
+				7B6FEF8A1934E6EC00F3DBE7 /* tftp.c in Sources */,
+				7B013DB119D817BC0015DEBB /* netlink.c in Sources */,
+				7B6FEF891934E6EC00F3DBE7 /* slaac.c in Sources */,
+				7B6FEF711934E6EC00F3DBE7 /* blockdata.c in Sources */,
+				7B6FEF7B1934E6EC00F3DBE7 /* domain.c in Sources */,
+				7B6FEF771934E6EC00F3DBE7 /* dhcp.c in Sources */,
+				7B6FEF881934E6EC00F3DBE7 /* rfc3315.c in Sources */,
+				7B6FEF7C1934E6EC00F3DBE7 /* forward.c in Sources */,
+				7B6FEF861934E6EC00F3DBE7 /* rfc1035.c in Sources */,
+				7B6FEF801934E6EC00F3DBE7 /* log.c in Sources */,
+				7B6FEF751934E6EC00F3DBE7 /* dbus.c in Sources */,
+				7B6FEF7D1934E6EC00F3DBE7 /* helper.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BC375B91934EF7B00087777 /* dnsmasqapp.m in Sources */,
+				7B47B0E61A82E62A00AC581D /* dnsmasqapp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,31 +408,28 @@
 		7B6FEECD1934E4A300F3DBE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -439,29 +437,26 @@
 		7B6FEECE1934E4A300F3DBE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
-				CLANG_ENABLE_MODULES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				OTHER_CFLAGS = "";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -472,8 +467,6 @@
 				DEBUGGING_SYMBOLS = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -481,8 +474,6 @@
 		7B6FEED11934E4A300F3DBE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -497,15 +488,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = "$(AZBUILD)";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					__APPLE_USE_RFC_3542,
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				HEADER_SEARCH_PATHS = (
 					"$(AZBUILD)/include",
 					/usr/local/include,
 					"\"$(SRCROOT)/**\"",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				OTHER_CFLAGS = (
+					"-DSHARED_LIB",
+					"-DVERSION='\"2.72AZ\"'",
 				);
 				PRODUCT_NAME = dnsmasq;
 			};
@@ -521,15 +513,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = "$(AZBUILD)";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					__APPLE_USE_RFC_3542,
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1";
 				HEADER_SEARCH_PATHS = (
 					"$(AZBUILD)/include",
 					/usr/local/include,
 					"\"$(SRCROOT)/**\"",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+				);
+				OTHER_CFLAGS = (
+					"-DSHARED_LIB",
+					"-DVERSION='\"2.72AZ\"'",
 				);
 				PRODUCT_NAME = dnsmasq;
 			};
@@ -538,6 +531,7 @@
 		7BC375BF1934EF7B00087777 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DSTROOT = /;
 				FRAMEWORK_SEARCH_PATHS = "$(AZBUILD)";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -558,6 +552,7 @@
 		7BC375C01934EF7B00087777 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DSTROOT = /;
 				FRAMEWORK_SEARCH_PATHS = "$(AZBUILD)";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

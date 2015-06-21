@@ -6,7 +6,7 @@
   //  Copyright (c) 2014 Alex Gray. All rights reserved.
   //
 
-#import "dnsmasq.h"
+#import "dnsmasqKit.h"
 
 #import <AtoZ/AtoZ.h>
 

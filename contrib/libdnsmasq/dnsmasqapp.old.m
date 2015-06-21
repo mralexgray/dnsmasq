@@ -1,7 +1,3 @@
-
-@import AppKit;
-@import Darwin;
-
 #ifndef DNSMASQ_COMPILE_OPTS
 #define DNSMASQ_COMPILE_OPTS 1
 #endif
@@ -20,7 +16,6 @@ static     void         sig_handler( int sig );
 
 int main (int argc, char **argv) {
 
-  @autoreleasepool {
 
 
     NSLog(@"args: %@", NSProcessInfo.processInfo.arguments);
@@ -1185,6 +1180,7 @@ static void check_dns_listeners(fd_set *set, time_t now)                    {
     }
   }
 }
+
 static void         fatal_event(struct event_desc *ev, char *msg)           {
   errno = ev->data;
 
@@ -1278,7 +1274,7 @@ static  int   set_dns_listeners(time_t now, fd_set *set, int *maxfdp)       {
   
   return wait;
 }
-
+*/
 
 
 /* 

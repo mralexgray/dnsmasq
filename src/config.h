@@ -142,6 +142,9 @@ RESOLVFILE
 #define HAVE_AUTH
 #define HAVE_IPSET 
 
+
+#define HAVE_BSD_BRIDGE
+
 /* Build options which require external libraries.
    
    Defining HAVE_<opt>_STATIC as _well_ as HAVE_<opt> will link the library statically.

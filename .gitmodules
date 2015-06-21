@@ -1,0 +1,3 @@
+[submodule "akadns"]
+	path = akadns
+	url = git@github.com:cbdevnet/akadns.git

@@ -31,7 +31,11 @@ static void async_event(int pipe, time_t now);
 static void fatal_event(struct event_desc *ev, char *msg);
 static int read_event(int fd, struct event_desc *evp, char **msg);
 
+#ifdef SHARED_LIB
+int dnsmasq (int argc, char **argv)
+#else
 int main (int argc, char **argv)
+#endif
 {
   int bind_fallback = 0;
   time_t now;

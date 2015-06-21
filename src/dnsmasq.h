@@ -1446,3 +1446,7 @@ void slaac_add_addrs(struct dhcp_lease *lease, time_t now, int force);
 time_t periodic_slaac(time_t now, struct dhcp_lease *leases);
 void slaac_ping_reply(struct in6_addr *sender, unsigned char *packet, char *interface, struct dhcp_lease *leases);
 #endif
+
+#ifdef SHARED_LIB
+int dnsmasq (int argc, char **argv);
+#endif
